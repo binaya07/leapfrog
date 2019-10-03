@@ -1,11 +1,21 @@
+var imgList = ["images/image1.jpg","images/image2.jpg",
+"images/image3.jpg","images/image4.jpg",
+"images/image5.jpg"]
 
-function slider(imageSourceList = [], animationSpeed = 60, holdTime = 3){
+var slider1 = new slider(imgList, 2, 2).init();
+var slider2 = new slider(imgList, 6, 4).init();
+var slider3 = new slider(imgList, 10, 4).init();
+var slider4 = new slider(imgList, 14, 6).init();
+
+
+function slider(imageSourceList = [], transitionTime, holdTime){
 
     this.container;
     this.wrapper;
     this.leftButton;
     this.rightButton;
     this.indicatorDiv;
+    this.indicatorsList;
     this.currentSlide = 0;
     this.currentIndicator;
     this.currentSliderLeftPosition = 0;
@@ -15,6 +25,8 @@ function slider(imageSourceList = [], animationSpeed = 60, holdTime = 3){
     this.numberOfImages;
     this.MAXIMUM_LEFT_POSITION = 0;
     this.MINIMUM_LEFT_POSITION;
+    this.automaticTransition;
+    this.transitionInterval;
 
     this.init = function(){
         this.addContainer();
@@ -24,9 +36,15 @@ function slider(imageSourceList = [], animationSpeed = 60, holdTime = 3){
         this.addRightButton();
         this.addIndicators();
 
+        this.transitionInterval = (transitionTime * 1000 / this.containerWidth);
+        
+        //console.log(this.transitionInterval);
+
         this.leftButton.onclick = leftSlide.bind(this);
         this.rightButton.onclick = rightSlide.bind(this);
+        this.indicatorDiv.onclick = changeImageToIndicatorPos.bind(this);
         
+        this.automaticTransition = setInterval(rightSlide.bind(this), (holdTime * 1000 + transitionTime * 1000) );
     }
 
 
@@ -139,6 +157,8 @@ function slider(imageSourceList = [], animationSpeed = 60, holdTime = 3){
         }
         this.container.appendChild(this.indicatorDiv);
 
+        this.indicatorsList = this.indicatorDiv.children;
+
         
         
         function getIndividualIndicator(){
@@ -155,24 +175,51 @@ function slider(imageSourceList = [], animationSpeed = 60, holdTime = 3){
 
     }
 
+
     
-    function leftSlide(e){
+    function rightSlide(e){
         
         this.nextSliderLeftPosition = this.nextSliderLeftPosition - this.containerWidth;
     
         if (this.nextSliderLeftPosition <= this.MINIMUM_LEFT_POSITION){
             this.nextSliderLeftPosition = 0;
 
-            var id1 = setInterval(frame1.bind(this), 1000/animationSpeed);
+            
+            var id1= setInterval(frame1.bind(this), this.transitionInterval);
             
             function frame1(){
             
                 if(this.currentSliderLeftPosition >= this.nextSliderLeftPosition){
                     this.currentSliderLeftPosition = this.nextSliderLeftPosition;
-                    this.wrapper.style.left = this.nextSliderLeftPosition + 'px';                        
+                    this.wrapper.style.left = this.nextSliderLeftPosition + 'px';            
+                    
+                    this.currentSlide = Math.round(Math.abs(this.currentSliderLeftPosition / this.containerWidth));
+                    
+                    for(var i = 0; i < this.indicatorsList.length; i++)
+                    {
+                        if(i == this.currentSlide){
+                            this.indicatorsList[i].style.width = '18px';
+                            this.indicatorsList[i].style.height = '18px';
+                            this.indicatorsList[i].style.backgroundColor = 'rgba(255,255,255,1)';
+                        }
+                        else{
+                            this.indicatorsList[i].style.width = '15px';
+                            this.indicatorsList[i].style.height = '15px';
+                            this.indicatorsList[i].style.backgroundColor = 'rgba(255,255,255,0.5)';
+                        }
+                        }
+                    
+                    this.leftButton.disabled = false;
+                    this.rightButton.disabled = false;
+                    this.indicatorDiv.disabled = false;
+                        
                     clearInterval(id1);
                 }
                 else{
+                    this.leftButton.disabled = true;
+                    this.rightButton.disabled = true;
+                    this.indicatorDiv.disabled = true;
+                    
                     this.currentSliderLeftPosition = this.currentSliderLeftPosition + 100;
                     this.wrapper.style.left = this.currentSliderLeftPosition + 'px';
                 
@@ -183,17 +230,43 @@ function slider(imageSourceList = [], animationSpeed = 60, holdTime = 3){
         else{
             //console.log('nextPos: ' + this.nextSliderLeftPosition + ' , currentPos:' + this.currentSliderLeftPosition);                
         
-            var id = setInterval(frame.bind(this), 1000/animationSpeed );
+            //console.log(this.transitionInterval);
+            var id2 = setInterval(frame2.bind(this), this.transitionInterval);
             
-            function frame(){
+            function frame2(){
             
                 if(this.currentSliderLeftPosition <= this.nextSliderLeftPosition){
                     this.currentSliderLeftPosition = this.nextSliderLeftPosition;
                     this.wrapper.style.left = this.nextSliderLeftPosition + 'px';
-                    clearInterval(id);
+                    
+                    this.currentSlide = Math.round(Math.abs(this.currentSliderLeftPosition / this.containerWidth));
+                    
+                    for(var i = 0; i < this.indicatorsList.length; i++)
+                    {
+                        if(i == this.currentSlide){
+                            this.indicatorsList[i].style.width = '18px';
+                            this.indicatorsList[i].style.height = '18px';
+                            this.indicatorsList[i].style.backgroundColor = 'rgba(255,255,255,1)';
+                        }
+                        else{
+                            this.indicatorsList[i].style.width = '15px';
+                            this.indicatorsList[i].style.height = '15px';
+                            this.indicatorsList[i].style.backgroundColor = 'rgba(255,255,255,0.5)';
+                        }
+                        }
+                    
+                    this.leftButton.disabled = false;
+                    this.rightButton.disabled = false;
+                    this.indicatorDiv.disabled = false;
+                            
+                    clearInterval(id2);
                 }
                 else{
-                    this.currentSliderLeftPosition = this.currentSliderLeftPosition - 10;
+                    this.leftButton.disabled = true;
+                    this.rightButton.disabled = true;
+                    this.indicatorDiv.disabled = true;
+                    
+                    this.currentSliderLeftPosition = this.currentSliderLeftPosition - 5;
                     this.wrapper.style.left = this.currentSliderLeftPosition + 'px';
                     
                 }
@@ -201,7 +274,7 @@ function slider(imageSourceList = [], animationSpeed = 60, holdTime = 3){
         }
     }
 
-    function rightSlide(e){
+    function leftSlide(e){
         
         this.nextSliderLeftPosition = this.nextSliderLeftPosition + this.containerWidth;
         //console.log(this.MINIMUM_LEFT_POSITION);
@@ -209,16 +282,42 @@ function slider(imageSourceList = [], animationSpeed = 60, holdTime = 3){
         if (this.nextSliderLeftPosition > this.MAXIMUM_LEFT_POSITION){
             this.nextSliderLeftPosition = this.MINIMUM_LEFT_POSITION + this.containerWidth;
 
-            var id1 = setInterval(frame1.bind(this), 1000/animationSpeed);
+            var id3 = setInterval(frame3.bind(this), this.transitionInterval);
             
-            function frame1(){
+            function frame3(){
             
                 if(this.currentSliderLeftPosition <= this.nextSliderLeftPosition){
                     this.currentSliderLeftPosition = this.nextSliderLeftPosition;
-                    this.wrapper.style.left = this.nextSliderLeftPosition + 'px';                        
-                    clearInterval(id1);
+                    this.wrapper.style.left = this.nextSliderLeftPosition + 'px';      
+                    
+                    this.currentSlide = Math.round(Math.abs(this.currentSliderLeftPosition / this.containerWidth));
+                    
+                    for(var i = 0; i < this.indicatorsList.length; i++)
+                    {
+                        if(i == this.currentSlide){
+                            this.indicatorsList[i].style.width = '18px';
+                            this.indicatorsList[i].style.height = '18px';
+                            this.indicatorsList[i].style.backgroundColor = 'rgba(255,255,255,1)';
+                        }
+                        else{
+                            this.indicatorsList[i].style.width = '15px';
+                            this.indicatorsList[i].style.height = '15px';
+                            this.indicatorsList[i].style.backgroundColor = 'rgba(255,255,255,0.5)';
+                        }
+                        }
+                    
+                    this.leftButton.disabled = false;
+                    this.rightButton.disabled = false;
+                    this.indicatorDiv.disabled = false;
+                            
+                    clearInterval(id3);
                 }
                 else{
+
+                    this.leftButton.disabled = true;
+                    this.rightButton.disabled = true;
+                    this.indicatorDiv.disabled = true;
+
                     this.currentSliderLeftPosition = this.currentSliderLeftPosition - 100;
                     this.wrapper.style.left = this.currentSliderLeftPosition + 'px';
                 
@@ -229,31 +328,76 @@ function slider(imageSourceList = [], animationSpeed = 60, holdTime = 3){
         else{
             //console.log('nextPos: ' + this.nextSliderLeftPosition + ' , currentPos:' + this.currentSliderLeftPosition);                
         
-            var id = setInterval(frame.bind(this), 1000/animationSpeed );
+            var id4 = setInterval(frame4.bind(this), this.transitionInterval );
             
-            function frame(){
+            function frame4(){
             
                 if(this.currentSliderLeftPosition >= this.nextSliderLeftPosition){
                     this.currentSliderLeftPosition = this.nextSliderLeftPosition;
                     this.wrapper.style.left = this.nextSliderLeftPosition + 'px';
-                    clearInterval(id);
+                    
+                    this.currentSlide = Math.round(Math.abs(this.currentSliderLeftPosition / this.containerWidth));
+                    
+                    for(var i = 0; i < this.indicatorsList.length; i++)
+                    {
+                        if(i == this.currentSlide){
+                            this.indicatorsList[i].style.width = '18px';
+                            this.indicatorsList[i].style.height = '18px';
+                            this.indicatorsList[i].style.backgroundColor = 'rgba(255,255,255,1)';
+                        }
+                        else{
+                            this.indicatorsList[i].style.width = '15px';
+                            this.indicatorsList[i].style.height = '15px';
+                            this.indicatorsList[i].style.backgroundColor = 'rgba(255,255,255,0.5)';
+                        }
+                        }
+                    
+                    this.leftButton.disabled = false;
+                    this.rightButton.disabled = false;
+                    this.indicatorDiv.disabled = false;                   
+
+                    clearInterval(id4);
                 }
                 else{
-                    this.currentSliderLeftPosition = this.currentSliderLeftPosition + 10;
+                    this.leftButton.disabled = true;
+                    this.rightButton.disabled = true;
+                    this.indicatorDiv.disabled = true;
+                    
+                    this.currentSliderLeftPosition = this.currentSliderLeftPosition + 5;
                     this.wrapper.style.left = this.currentSliderLeftPosition + 'px';
                     
                 }
             }
         }
     }
+    
+
+    function changeImageToIndicatorPos(e){
+
+        for(var i = 0; i < this.indicatorsList.length; i++)
+        {
+            if(this.indicatorsList[i] == e.target)
+            {
+                // change currentLeft nextLeft and currentSlide values
+
+                this.nextSliderLeftPosition = - i * this.containerWidth; 
+                this.currentSlide = i;
+
+                this.currentSliderLeftPosition = this.nextSliderLeftPosition;
+
+
+                this.wrapper.style.left = this.nextSliderLeftPosition + 'px';
+                
+                this.indicatorsList[i].style.width = '18px';
+                this.indicatorsList[i].style.height = '18px';
+                this.indicatorsList[i].style.backgroundColor = 'rgba(255,255,255,1)';
+            }
+            else{
+                this.indicatorsList[i].style.width = '15px';
+                this.indicatorsList[i].style.height = '15px';
+                this.indicatorsList[i].style.backgroundColor = 'rgba(255,255,255,0.5)';
+            }
+        }
+    }
+
 }
-
-
-var imgList = ["images/image1.jpg","images/image2.jpg",
-"images/image3.jpg","images/image4.jpg",
-"images/image5.jpg"]
-
-var s = new slider(imgList,30).init();
-var d = new slider(imgList,60).init();
-var e = new slider(imgList,90).init();
-var f = new slider(imgList,120).init();
