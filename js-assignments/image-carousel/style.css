@@ -1,0 +1,27 @@
+*{
+    box-sizing: border-box;
+}
+
+.carousel-container{
+    position: relative;
+    width: 800px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+.carousel-image-wrapper{
+    position: absolute;
+    left: 0;
+
+    /**set width and z-index from javscript **/
+}
+
+
+.carousel-image-wrapper img{
+    float: left;
+    object-fit: cover;
+    width: 800px;
+    height: 500px;
+}
