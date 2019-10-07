@@ -1,14 +1,6 @@
-.body-content{
-    padding-top: 125px;
-    min-width: 94em; 
-}
-.footer{
-    min-width: 94em; 
-}
-
 .header{
     position: relative;
-    min-width: 94em;
+    width: 100%;
 }
 
 video {
@@ -22,26 +14,49 @@ video {
     z-index: -1;
     object-position: center;
     object-fit: cover;
-  }
+}
 
-
-.container-centered{
-    width: 90em;
+.carousel-container{
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    margin-top: 30px;
+    margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .header-top{
-    padding-top: 70px;
+    padding-top: 35px;
 }
 
-
 .header-bottom{
-    margin-top: 118px;
+    margin-top: 59px;
+}
+
+.mobile-menu-ul{
+    list-style: none;
+    text-align: center;
+    background: gray;
+}
+
+.mobile-menu-ul li{
+    font-size: 14px;
+    font-family: "Poppins";
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.mobile-menu-ul li:hover{
+    background: lightgrey;
+}
+
+.mobile-menu-ul li:hover a{
+    color: #b47500;
 }
 
 .main-logo-div{
-    margin-left: 46px;
     float: left;
 }
 
@@ -49,44 +64,162 @@ video {
     float: right;
 }
 
+.footer{
+    width: 100%;
+}
+
+.body-content{
+    width: 100%;
+    padding-top: 60px;
+
+}
+
+.container-centered{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.banner-title {
+    font-size: 25px;
+    font-family: "PlayfairDisplay";
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.banner-date-venue{
+    font-size: 13px;
+    font-family: "Poppins";
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
 .banner-counter{
-    margin-top: 57px;
-}
-
-.early-counter{
-    margin-top: 20px;
-    margin-bottom: 20px; 
-}
-
-.early-grid-container{
-    padding-left: 45px;
-    padding-right: 45px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    border-radius: 7px;
-    width: 62%;
-    margin-left: auto;
-    margin-right: auto;
-    display: table;
+    margin-top: 25px;
 }
 
 .banner-grid-container{
-    padding-left: 45;
-    padding-right: 45;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     border-radius: 7px;
     background-color: rgb(242, 85, 67);
     opacity: 0.8;
     margin-left: auto;
     margin-right: auto;
     display: table;
+    list-style: none;
+}
+
+.banner-grid-item{
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    color: white;
+    background: none;
+    float: left;
+    width: 50%;
+}
+
+.learn-more-button {
+    margin-top: 30px;
+    font-size: 12px;
+    font-family: "Poppins";
+    color: white;
+    font-weight: bold;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.buy-ticket-button {
+    margin-top: 20px;
+    font-size: 12px;
+    font-family: "Poppins";
+    font-weight: bold;
+    text-align: center;
+}
+
+.banner-grid-item:first-child{
+    padding-left: 20px;
+}
+
+.banner-grid-item:last-child{
+    padding-right: 20px;
+}
+
+.play-button {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-align: center;  
+}
+
+.body-about{
+    text-align: center;
+    padding-bottom: 60px;
+}
+
+.body-about-desc{
+    width: 80%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 12px;
+    font-family: "Poppins";
+    color: rgb(28, 29, 29);
+    line-height: 2;
 }
 
 
+.sponsors-main-wrapper{
+    padding-top: 30px;
+}
+
+.copyright{
+    font-size: 12px;
+    font-family: "Poppins";
+    color: rgb(206, 206, 206);
+    text-align: center;
+    background-color: #272828;
+}
+
+.footer-top-right{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 0px;
+    float: none;
+    width: 100%;
+}
+
+.footer-top-left{
+    margin-top: 30px;
+    float: none;
+    width: 100%;
+}
+
+
+.footer-top-left .left{
+    float: none;
+    width: 100%;
+}
+
+.footer-top-left .right{
+    margin-left: 0px;
+    float: none;
+}
+
+.stats-counter-wrapper{
+    padding-top: 30px;
+    padding-bottom: 60px;
+    background-image: -moz-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
+    background-image: -webkit-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
+    background-image: -ms-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
+
+}
+
 .stats-grid-container{
-    padding-left: 45;
-    padding-right: 45;
     margin-top: 30px;
     padding-bottom: 30px;
     border-radius: 7px;
@@ -94,292 +227,57 @@ video {
     margin-right: auto;
     display: table;
 }
+
 .early-grid-item, .stats-grid-item{
-    padding-left: 55px;
-    padding-right: 75px;
+    padding-left: 15px;
+    padding-right: 15px;
     text-align: center;
     color: white;
-    background: url(../images/banner-counter-rectangle.png);
+    background: none;
     background-repeat: no-repeat;
     background-position: right;
-}
-
-.early-grid-item-no-bg, .stats-grid-item-no-bg{
-    padding-left: 55px;
-    padding-right: 75px;
-    text-align: center;
-    color: white;
-}
-
-.banner-grid-item{
-    padding-left: 44px;
-    padding-right: 63px;
-    text-align: center;
-    color: white;
-    background: url(../images/banner-counter-rectangle.png);
-    background-repeat: no-repeat;
-    background-position: right;
-}
-
-.banner-grid-item-no-bg{
-    padding-left: 44px;
-    padding-right: 63px;
-    text-align: center;
-    color: white;
-}
-
-.banner-button, .body-about-button{
-    display: table;
-    margin-left:auto;
-    margin-right: auto;
-}
-
-.banner-title {
-    font-size: 60px;
-    font-family: "PlayfairDisplay";
-    color: white;
-    font-weight: bold;
-    text-align: center;
-}
-  
-.banner-date-venue{
-    font-size: 22px;
-    font-family: "Poppins";
-    color: white;
-    font-weight: bold;
-    text-align: center;
-}
-
-.learn-more-button {
-    margin-top: 65px;
-    font-size: 18px;
-    font-family: "Poppins";
-    color: white;
-    font-weight: bold;
-    border: 2px solid white;
-    border-radius: 30px;
-    float: left;
-  }
-
-.early-tickets-main-wrapper .buy-ticket-button{
-    font-size: 18px;
-    font-family: "Poppins";
-    font-weight: bold;
-    margin-top: 0px;
-    margin-left: 0px;
-}
-
-.buy-ticket-button {
-    margin-top: 65px;
-    font-size: 18px;
-    font-family: "Poppins";
-    font-weight: bold;
-    float: left;
-    margin-left: 30px;
-  }
-  
-.play-button {
-    margin-top: 91px;
-    margin-bottom: 69px;
-    text-align: center;  
-}
-
-.body-about{
-    text-align: center;
-    padding-bottom: 120px;
-}
-
-.body-about-desc{
-    width: 63.361%;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    display: table;
-    margin-top: 40px;
-    margin-bottom: 80px;
-    font-size: 18px;
-    font-family: "Poppins";
-    color: rgb(28, 29, 29);
-    line-height: 2;
-}
-
-.body-subscribe-main-wrapper, 
-.early-tickets-main-wrapper{
-    background-image: -moz-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
-    background-image: -webkit-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
-    background-image: -ms-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
-  
-}
-
-
-.stats-counter-wrapper{
-    padding-top: 90px;
-    padding-bottom: 220px;
-    background-image: -moz-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
-    background-image: -webkit-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
-    background-image: -ms-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
-  
-}
-.early-button{
-    margin-left: auto;
-    margin-right: auto;
-    display: table;
-    padding-bottom: 115px;
-
-}
-
-.subscribe-contents-wrapper{
-    margin-left: auto;
-    margin-right: auto;
-    display: table;
-}
-
-.sponsors-main-wrapper{
-    padding-top: 120px;
-}
-
-.sponsors-list{
-    margin-left: auto;
-    margin-right: auto;
-    display: table;
-    text-align: center;
-    border-top: 1px solid #e9e9e9;
-    border-top: 1px solid #e9e9e9;
-}
-.event-sponsors-title{
-    text-align: center;
-}
-
-.footer-top-left{
-    margin-top: 121px;
-    float: left;
-    width: 53%;
-}
-
-.footer-top-right{
-    margin-top: 121px;
-    margin-bottom: 93px;
-    margin-left: 142px;
-    float:right;
-
-    width: 33%;
-}
-
-.footer-top-content-wrapper{
-    padding-left: 134px;
-    padding-right: 134px;
-}
-.footer-top{
-    background-color: #1c1d1d;
-    color: white;
-}
-
-.copyright{
-    font-size: 16px;
-    font-family: "Poppins";
-    color: rgb(206, 206, 206);
-    text-align: center;
-    background-color: #272828;
-    line-height: 93px;
-  }
-  
-  .footer-top-left .left{
-      float: left;
-      width: 59.39%;
-  }
-
-  .footer-top-left .right{
-      margin-left: 124px;
-    float: right;
-}
-
-
-.testimonials-main-wrapper{
-    padding-top: 120px;
-    padding-bottom: 120px;
-}
-
-.testimonials-title{
-    text-align: center;
-}
-
-.testimonials-samples-row{
-    margin-top: 80px;
-    padding-left: 130px;
-    padding-right: 130px;
-    width:100%;
-    display: table;
-}
-
-.testimonial{
-    position: relative;
-    margin-right: 30px;
-    width: 47%;
-}
-
-.testimonial-text-box{
-    float: right;
-    width: 91.9%;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    padding-left: 80px;
-    padding-right: 65px;
-    box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.07);
-}
-  
-.testimonial .user-image{
-    position: absolute;
-    left: 0;
-    top: 60px;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: black;
+    float:left;
 }
 
 .confirmed-speakers-child-wrapper{
-    margin-top: -130px;
+    margin-top: -30px;
     background: white;
-    padding-top: 120px;
-    padding-left: 150px;
-    padding-right: 90px;
-    padding-bottom: 50px;    
+    padding-top: 30px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 30px;    
     box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.07);
 
 }
 
 .past-speakers-child-wrapper{
     background: white;
-    padding-top: 90px;
-    padding-left: 150px;
-    padding-right: 90px;
-    padding-bottom: 50px;    
+    padding-top: 30px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;    
     margin-top: 30px;
 }
 
 .speakers-info-container{
-    margin-top: 50px;
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-.speakers-row{
-    margin-bottom: 30px;
-}
 
 .speaker-info{
-    margin-right: 30px;
+    margin-bottom: 20px;
+    float: none;
+    margin-right: 0px;
     position: relative;
-    width: 370px;
-    height: 480px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.3),rgba(0,0,0,1));
-}
-
-.speaker-image{
     width: 100%;
+    height: 400px;
     display: table;
-    height: 100%;
+
 }
 
-.speaker-image .bottom{
+.speaker-info .bottom{
     display: table-cell;
     width: 100%;
     vertical-align: bottom;
@@ -391,8 +289,8 @@ video {
 .gradient-bg{
     position: absolute;
     width: 100%;
-    padding-top: 170px;
-    margin-top: -65px; 
+    padding-top: 90px;
+    margin-top: -30px; 
     background-image: -moz-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
     background-image: -webkit-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
     background-image: -ms-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
@@ -400,77 +298,179 @@ video {
 }
 
 .schedule-main-wrapper{
-    padding-top:45px;
+    padding-top: 30px;
 }
 
 .schedule-child-wrapper{
     background-color: white;
     box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.07);
-    padding-top: 115px;
+    padding-top: 45px;
     padding-bottom: 45px;
+}
+
+.early-tickets-main-wrapper .buy-ticket-button{
+    font-size: 12px;
+    font-family: "Poppins";
+    font-weight: bold;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.testimonials-main-wrapper{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+
+.testimonials-samples-row{
+    margin-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width:100%;
+    display: table;
+}
+
+.testimonial{
+    position: relative;
+    margin-right: 0px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.testimonial-text-box{
+    float: right;
+    width: 91.9%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 80px;
+    padding-right: 40px;
+    box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.07);
+}
+
+.testimonial .user-image{
+    position: absolute;
+    left: 0;
+    top: 30px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: black;
+    object-fit: cover;
+}
+
+.early-counter{
+    margin-top: 5px;
+    margin-bottom: 5px; 
+}
+
+.early-button{
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+    padding-bottom: 30px;
+}
+
+.early-grid-container{
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    border-radius: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
 }
 
 .schedule-title{
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }  
 
-.day-tab{
-    display: table;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .auditorium-tab{
-    margin-top: 28px;
+    margin-top: 18px;
     display: table;
     margin-left: auto;
     margin-right: auto;
 }
 
 .event{
-    padding-top: 45px;
+    padding-top: 20px;
 
 }
 
 .auditorium-events{
-    width:50%;
+    width:90%;
     margin-left: auto;
     margin-right: auto;
 }
 
 .event-right{
-    width: 87.5%;
+    width: 80%;
     float: right;
-    padding-bottom: 45px;
+    padding-bottom: 20px;
     padding-left: 10px;
     border-bottom: 2px solid #f3f3f3;
 }
 
 .event-right .title{
     margin-top: 15px;
-    font-size: 22px;
+    font-size: 16px;
     font-family: "PlayfairDisplay";
     color: rgb(28, 29, 29);
     font-weight: bold;
-  }
+}
 
 .event-right .date-div {
-    font-size: 18px;
+    font-size: 12px;
     font-family: "Poppins";
     color: rgb(28, 29, 29);
     line-height: 2;
-  }
-  
+}
+
 
 .event-right .description{
-    margin-top: 25px; 
-    font-size: 16px;
+    margin-top: 15px; 
+    font-size: 14px;
     font-family: "Poppins";
     color: rgb(28, 29, 29);
     line-height: 1.75;
 }
-  
+
+#thomas{
+        background: linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.3),rgba(0,0,0,1)),
+                    url(../images/speaker1.png) center;
+        background-repeat: no-repeat; 
+}
+
+#ken{
+        background: linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.3),rgba(0,0,0,1)),
+                    url(../images/speaker2.png) center;
+        background-repeat: no-repeat; }
+
+#sandra{
+        background: linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.3),rgba(0,0,0,1)),
+                    url(../images/speaker3.png) center;
+        background-repeat: no-repeat; 
+}
+
+#brad{
+        background: linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.3),rgba(0,0,0,1)),
+                    url(../images/speaker4.png) center;
+        background-repeat: no-repeat; 
+}
+
+#barry{
+        background: linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.3),rgba(0,0,0,1)),
+                    url(../images/speaker5.png) center;
+        background-repeat: no-repeat; 
+}
+
+#eva{
+        background: linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.3),rgba(0,0,0,1)),
+                    url(../images/speaker6.png); 
+        background-repeat: no-repeat; 
+}
+
 /** clear fix**/
 .header-top::after,
 .header-bottom::after,
@@ -480,38 +480,423 @@ video {
 .sponsors-list ul,
 .speakers-row::after,
 .schedule-main-block ul::after,
-.event::after{
+.stats-grid-container ul::after,
+.event::after,
+.speakers-info-container::after{
     content: "";
     display: table;
     clear: both;
-}
+}              
+                
+@media(min-width: 992px){
+    
+    .body-content{
+        padding-top: 125px;
+        min-width: 94em; 
+    }
+    .footer{
+        min-width: 94em; 
+    }
+
+    .header{
+        position: relative;
+        min-width: 94em;
+    }
 
 
-#thomas{
-    background: linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.3),rgba(0,0,0,1)),
-                url(../images/speaker1.png) center;
-}
+    .container-centered{
+        width: 90em;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-#ken{
-    background: linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.3),rgba(0,0,0,1)),
-                url(../images/speaker2.png) center;}
+    .header-top{
+        padding-top: 70px;
+    }
 
-#sandra{
-    background: linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.3),rgba(0,0,0,1)),
-                url(../images/speaker3.png) center;
-}
 
-#brad{
-    background: linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.3),rgba(0,0,0,1)),
-                url(../images/speaker4.png) center;
-}
+    .header-bottom{
+        margin-top: 118px;
+    }
 
-#barry{
-    background: linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.3),rgba(0,0,0,1)),
-                url(../images/speaker5.png) center;
-}
+    .main-logo-div{
+        margin-left: 46px;
+        float: left;
+    }
 
-#eva{
-    background: linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.3),rgba(0,0,0,1)),
-                url(../images/speaker6.png);
+    .header-top-right{
+        float: right;
+    }
+
+    .banner-counter{
+        margin-top: 57px;
+    }
+
+    .early-counter{
+        margin-top: 20px;
+        margin-bottom: 20px; 
+    }
+
+    .early-grid-container{
+        padding-left: 45px;
+        padding-right: 45px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        border-radius: 7px;
+        margin-left: auto;
+        margin-right: auto;
+        display: table;
+    }
+
+    .banner-grid-container{
+        padding-top: 30px;
+        padding-bottom: 30px;
+        border-radius: 7px;
+        background-color: rgb(242, 85, 67);
+        opacity: 0.8;
+        margin-left: auto;
+        margin-right: auto;
+        display: table;
+        list-style: none;
+    }
+
+    .stats-grid-container{
+        margin-top: 30px;
+        padding-bottom: 30px;
+        border-radius: 7px;
+        margin-left: auto;
+        margin-right: auto;
+        display: table;
+    }
+
+    .early-grid-item, .stats-grid-item{
+        padding-left: 55px;
+        padding-right: 75px;
+        text-align: center;
+        color: white;
+        background: url(../images/banner-counter-rectangle.png);
+        background-repeat: no-repeat;
+        background-position: right;
+        float:left;
+    }
+
+
+    .banner-grid-item{
+        width:25%;
+        margin-bottom: 0px;
+        padding-left: 44px;
+        padding-right: 63px;
+        text-align: center;
+        color: white;
+        background: url(../images/banner-counter-rectangle.png);
+        background-repeat: no-repeat;
+        background-position: right;
+        float: left;
+    }
+
+    .banner-grid-item:first-child{
+        padding-left: 89px;
+    }
+
+    .banner-grid-item:last-child{
+        padding-right: 108px;
+        background: none;
+    }
+
+    .banner-title {
+        font-size: 60px;
+        font-family: "PlayfairDisplay";
+        color: white;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .banner-date-venue{
+        font-size: 22px;
+        font-family: "Poppins";
+        color: white;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .learn-more-button {
+        margin-top: 65px;
+        font-size: 18px;
+        font-family: "Poppins";
+        color: white;
+        font-weight: bold;
+        border: 2px solid white;
+        border-radius: 30px;
+        float: left;
+    }
+
+    .early-tickets-main-wrapper .buy-ticket-button{
+        font-size: 18px;
+        font-family: "Poppins";
+        font-weight: bold;
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+
+    .buy-ticket-button {
+        margin-top: 65px;
+        font-size: 18px;
+        font-family: "Poppins";
+        font-weight: bold;
+        float: left;
+        margin-left: 30px;
+    }
+    
+    .play-button {
+        margin-top: 91px;
+        margin-bottom: 69px;
+        text-align: center;  
+    }
+
+    .body-about{
+        text-align: center;
+        padding-bottom: 120px;
+    }
+
+    .body-about-desc{
+        width: 63.361%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        display: table;
+        margin-top: 40px;
+        margin-bottom: 80px;
+        font-size: 18px;
+        font-family: "Poppins";
+        color: rgb(28, 29, 29);
+        line-height: 2;
+    }
+
+
+    .stats-counter-wrapper{
+        padding-top: 90px;
+        padding-bottom: 220px;
+        background-image: -moz-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
+        background-image: -webkit-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
+        background-image: -ms-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
+    
+    }
+
+    .early-button{
+        margin-left: auto;
+        margin-right: auto;
+        display: table;
+        padding-bottom: 115px;
+
+    }
+
+
+    .sponsors-main-wrapper{
+        padding-top: 120px;
+    }
+
+    .footer-top-left{
+        margin-top: 121px;
+        float: left;
+        width: 53%;
+    }
+
+    .footer-top-right{
+        margin-top: 121px;
+        margin-bottom: 93px;
+        margin-left: 142px;
+        float:right;
+
+        width: 34%;
+    }
+
+    .footer-top-content-wrapper{
+        padding-left: 134px;
+        padding-right: 134px;
+    }
+
+    .copyright{
+        font-size: 16px;
+        font-family: "Poppins";
+        color: rgb(206, 206, 206);
+        text-align: center;
+        background-color: #272828;
+        line-height: 93px;
+    }
+    
+    .footer-top-left .left{
+        float: left;
+        width: 59.39%;
+    }
+
+    .footer-top-left .right{
+        margin-left: 120px;
+        float: right;
+    }
+
+
+    .testimonials-main-wrapper{
+        padding-top: 120px;
+        padding-bottom: 120px;
+    }
+
+
+    .testimonials-samples-row{
+        margin-top: 80px;
+        padding-left: 130px;
+        padding-right: 130px;
+        width:100%;
+        display: table;
+    }
+
+    .testimonial{
+        position: relative;
+        margin-right: 30px;
+        width: 47%;
+        margin-top: 0px;
+    }
+
+    .testimonial-text-box{
+        float: right;
+        width: 91.9%;
+        padding-top: 60px;
+        padding-bottom: 60px;
+        padding-left: 80px;
+        padding-right: 65px;
+        box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.07);
+    }
+    
+    .testimonial .user-image{
+        position: absolute;
+        left: 0;
+        top: 60px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: black;
+    }
+
+    .confirmed-speakers-child-wrapper{
+        margin-top: -130px;
+        background: white;
+        padding-top: 120px;
+        padding-left: 150px;
+        padding-right: 90px;
+        padding-bottom: 50px;    
+        box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.07);
+
+    }
+
+    .past-speakers-child-wrapper{
+        background: white;
+        padding-top: 90px;
+        padding-left: 150px;
+        padding-right: 90px;
+        padding-bottom: 50px;    
+        margin-top: 30px;
+    }
+
+    .speakers-info-container{
+        margin-top: 50px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .speaker-info{
+        margin-bottom: 20px;
+        float: left;
+        margin-right: 20px;
+        position: relative;
+        width: 370px;
+        height: 480px;
+        display: table;
+
+    }
+
+    .speaker-info .bottom{
+        display: table-cell;
+        width: 100%;
+        vertical-align: bottom;
+        padding-bottom: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+
+    .gradient-bg{
+        position: absolute;
+        width: 100%;
+        padding-top: 170px;
+        margin-top: -65px; 
+        background-image: -moz-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
+        background-image: -webkit-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
+        background-image: -ms-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
+        z-index: -1;
+    }
+
+    .schedule-main-wrapper{
+        padding-top:45px;
+    }
+
+    .schedule-child-wrapper{
+        background-color: white;
+        box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.07);
+        padding-top: 115px;
+        padding-bottom: 45px;
+    }
+
+    .schedule-title{
+        text-align: center;
+        margin-bottom: 50px;
+    }  
+
+    .auditorium-tab{
+        margin-top: 28px;
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .event{
+        padding-top: 45px;
+
+    }
+
+    .auditorium-events{
+        width:50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .event-right{
+        width: 87.5%;
+        float: right;
+        padding-bottom: 45px;
+        padding-left: 10px;
+        border-bottom: 2px solid #f3f3f3;
+    }
+
+    .event-right .title{
+        margin-top: 15px;
+        font-size: 22px;
+        font-family: "PlayfairDisplay";
+        color: rgb(28, 29, 29);
+        font-weight: bold;
+    }
+
+    .event-right .date-div {
+        font-size: 18px;
+        font-family: "Poppins";
+        color: rgb(28, 29, 29);
+        line-height: 2;
+    }
+    
+
+    .event-right .description{
+        margin-top: 25px; 
+        font-size: 16px;
+        font-family: "Poppins";
+        color: rgb(28, 29, 29);
+        line-height: 1.75;
+    }
+
 }

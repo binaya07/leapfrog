@@ -6,6 +6,7 @@
       <link rel="stylesheet" href="css/reset.css">
       <link rel="stylesheet" href="css/layout.css">
       <link rel="stylesheet" href="css/style.css">
+      
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
       <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
@@ -18,15 +19,15 @@
 
         <div class="header">
              
-            <video poster="images/poster-cover1.png">
-                <source src="" type="">
+            <video poster="images/poster-cover1.png" id="header-video">
+                <source src="videos/header-video.mp4" type="video/mp4">
             </video>
 
             <div class=" container-centered">
                 <div class="header-top">
                     <div class = "main-logo-div">
                         <h1>
-                            <a href = "#" ><img src="images/main-logo.png" title="main-logo" class="main-logo"></a>
+                            <a href = "#/" ><img src="images/main-logo.png" title="main-logo" class="main-logo"></a>
                         </h1>
                     </div> 
 
@@ -39,12 +40,27 @@
                             <li><a href="#">Insights</a></li>
                         </ul>
 
+                        <div class="menu-mobile"  onclick="showHideMenu()">
+                            <a href="#">
+                                <img src="images/menu-icon.png" width="25px" height="25px">
+                            </a>    
+                        </div>
+
                         <div class="header-top-button">
                             <a href="#">BUY YOUR TICKET</a>
                         </div>
                     </div>
                 </div>
 
+                <div id="popup-menu" style="display: none;">
+                    <ul class="mobile-menu-ul">
+                        <li><a href="#">Speakers</a></li>
+                        <li><a href="#">Schedule</a></li>
+                        <li><a href="#">Location</a></li>
+                        <li><a href="#">Sponsers</a></li>
+                        <li><a href="#">Insights</a></li>
+                    </ul>
+                </div>
 
                 <div class="header-bottom">
                     <div class="banner-title">
@@ -55,16 +71,16 @@
                     </div>
 
                     <div class="banner-counter">
-                        <div class="banner-grid-container">
-                            <div class="float-left">
-                                <div class="banner-grid-item float-left"><span>14</span><p>Days</p></div>
-                                <div class="banner-grid-item float-right"><span>11</span><p>Hours</p></div>
-                            </div>
-                            <div class="float-right">
-                                <div class="banner-grid-item float-left"><span>30</span><p>Minutes</p></div>
-                                <div class="banner-grid-item-no-bg float-right"><span>43</span><p>Seconds</p></div>
-                            </div>
-                        </div>
+                        <ul class="banner-grid-container">
+                            
+                                <li class="banner-grid-item"><span>14</span><p>Days</p></li>
+                                <li class="banner-grid-item"><span>11</span><p>Hours</p></li>
+                           
+                            
+                                <li class="banner-grid-item"><span>30</span><p>Minutes</p></li>
+                                <li class="banner-grid-item"><span>43</span><p>Seconds</p></li>
+                           
+                        </ul>
 
                     </div>
 
@@ -78,8 +94,8 @@
                         </div>
                     </div>
                     
-                    <div class="play-button">
-                        <a href="#"><img src="images/play-button.png"></a>
+                    <div class="play-button" onclick="playVideo()">
+                        <a href="#/"><img id="play-pause" src="images/play-button.png"></a>
                     </div>
 
                 </div>
@@ -99,11 +115,11 @@
                     traditional levers of advertising seem to work efficiently anymore.</p>
                 </div>
                 <div class="body-about-button">
-                    <div class="attend-button float-left">
+                    <div class="attend-button">
                         <a href="#">ATTEND</a>
                     </div>
     
-                    <div class="sponsor-button float-right">
+                    <div class="sponsor-button">
                           <a href="#">SPONSOR</a>           
                     </div>
                 </div>
@@ -113,23 +129,17 @@
             <div class="stats-counter-wrapper">
                 <div class="container-centered">
                     
-                                <div class="stats-grid-container">
-                                    <div class="float-left">
-                                        <div class="float-left">
-                                            <div class="stats-grid-item float-left"><span>50,000</span><p>Entrepreneurs</p></div>
-                                            <div class="stats-grid-item float-right"><span>250</span><p>Cities</p></div>
-                                        </div>
-
-                                        <div class="float-right">
-                                            <div class="stats-grid-item"><span>30</span><p>Countries</p></div>
-                                        </div>
-
-                                    </div>
-                                    <div class="float-right">
-                                        <div class="stats-grid-item float-left"><span>25</span><p>Speakers</p></div>
-                                        <div class="stats-grid-item-no-bg float-right"><span>10</span><p>Workshops</p></div>
-                                    </div>
-                            </div>
+                        <div class="stats-grid-container">
+                            <ul>
+                                        
+                                <li class="stats-grid-item"><span>50,000</span><p>Entrepreneurs</p></li>
+                                <li class="stats-grid-item"><span>250</span><p>Cities</p></li>                                                                             
+                                <li class="stats-grid-item"><span>30</span><p>Countries</p></li>                                                                 
+                                <li class="stats-grid-item"><span>25</span><p>Speakers</p></li>
+                                <li class="stats-grid-item"><span>10</span><p>Workshops</p></li>
+                                 
+                            </ul>
+                        </div>
         
                 </div>
             </div>
@@ -138,84 +148,75 @@
                 <div class="container-centered">
                     <div class="confirmed-speakers-child-wrapper">
                         <h2>Confirmed Speakers</h2>
-                        <div class="speakers-info-container">
-                            
-                            <div class="speakers-row">
+                                                    
+                        <ul class="speakers-info-container">
+    
+                            <li class="speaker-info" id="thomas">
+                                
+                                <img src="images/speaker1.png">
 
-                                <div class="float-left">
-                                    <div class="speaker-info float-left">
-                                        <div class="speaker-image" id="thomas">
-                                            <img src="images/speaker1.png">
+                                <div class="bottom">
+                                    <p class="name">Thomas Abruzzi Martin</p>
+                                    <P class="job">CEO at Fan Solutions</P>
+                                </div>
+                                
+                            </li>
 
-                                            <div class="bottom">
-                                                <p class="name">Thomas Abruzzi Martin</p>
-                                                <P class="job">CEO at Fan Solutions</P>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="speaker-info float-right">
-                                        <div class="speaker-image" id="ken">
-                                            <img src="images/speaker2.png">
+                            <li class="speaker-info" id="ken">
+                                
+                                    <img src="images/speaker2.png">
                                             
-                                            <div class="bottom">
-                                            <p class="name">Ken Thompson</p>
-                                            <P class="job">Marketing Director at KGP Media</P></div>
-                                        </div>
+                                    <div class="bottom">
+                                        <p class="name">Ken Thompson</p>
+                                        <P class="job">Marketing Director at KGP Media</P>
                                     </div>
-                                </div>
+                            </li>
+                                
 
-                                <div class="speaker-info float-right">
-                                    <div class="speaker-image" id="sandra">
-                                        <img src="images/speaker3.png">
+                            <li class="speaker-info" id="sandra">
+                                
+                                    <img src="images/speaker3.png">
 
-                                        <div class="bottom">
+                                    <div class="bottom">
                                         <p class="name">Sandra Perry</p>
-                                        <P class="job">Senior Developer at Frontech Media Solutions</P></div>
+                                        <P class="job">Senior Developer at Frontech Media Solutions</P>
                                     </div>
-                                    
-                                </div>
+                                                     
+                            </li>
 
-                            </div>
-
-                            <div class="speakers-row">
-
-                                <div class="float-left">
-                                    <div class="speaker-info float-left">
-                                        <div class="speaker-image" id="brad">
-                                            <img src="images/speaker4.png">
+                                
+                            <li class="speaker-info" id="brad">
+                               
+                                    <img src="images/speaker4.png">
                                        
-                                            <div class="bottom">
-                                            <p class="name">Brad K. Jackson</p>
-                                            <P class="job">Senior Developer at Frontech Media</P></div>
-                                        </div>
+                                    <div class="bottom">
+                                        <p class="name">Brad K. Jackson</p>
+                                        <P class="job">Senior Developer at Frontech Media</P>
                                     </div>
+                               
+                            </li>
 
-                                    <div class="speaker-info float-right">
-                                        <div class="speaker-image" id="barry">
-                                            <img src="images/speaker5.png">
-                                            <div class="bottom">
-                                            <p class="name">Barry Allen</p>
-                                            <P class="job">Marketing Director at KGP Media</P></div>
-                                        </div>
+                            <li class="speaker-info" id="barry">
+                               
+                                    <img src="images/speaker5.png">
+                                    <div class="bottom">
+                                        <p class="name">Barry Allen</p>
+                                        <P class="job">Marketing Director at KGP Media</P>
                                     </div>
-                                </div>
+                               
+                            </li>
+                                
 
-                                <div class="speaker-info float-right">
-                                    <div class="speaker-image" id="eva">
-                                        <img src="images/speaker6.png">
-                                        <div class="bottom">
+                            <li class="speaker-info" id="eva">
+                                    <img src="images/speaker6.png">
+                                    <div class="bottom">
                                         <p class="name">Eva Theron</p>
-                                        <P class="job">CEO at Fan Solutions</P></div>
+                                        <P class="job">CEO at Fan Solutions</P>
                                     </div>
-                                    
-                                </div>
-
-                            </div>
-
-
-
-                        </div>
+                            </li>
+                        
+                        </ul>
+                        
                     </div>
                 </div>
             </div>
@@ -237,59 +238,65 @@
                         <div class="schedule-main-block">
                             <div class="day-tab">
                                 <ul>
-                                    <li><a href="#"><p class="day">Day1</p><p class="date">11/24/2017</p></a></li>
-                                    <li><a href="#"><p class="day">Day2</p><p class="date">11/25/2017</p></a></li>
-                                    <li><a href="#"><p class="day">Day3</p><p class="date">11/28/2017</p></a></li>
-                                    <li><a href="#"><p class="day">Day4</p><p class="date">11/29/2017</p></a></li>
+                                    <li><a href="#/"><p class="day-active">Day1</p><p class="date-active">11/24/2017</p></a></li>
+                                    <li><a href="#/"><p class="day">Day2</p><p class="date">11/25/2017</p></a></li>
+                                    <li><a href="#/"><p class="day">Day3</p><p class="date">11/28/2017</p></a></li>
+                                    <li><a href="#/"><p class="day">Day4</p><p class="date">11/29/2017</p></a></li>
                                 </ul>
                             </div>
 
                             <div class="day-contents">
                                 <div class="auditorium-tab">
                                     <ul>
-                                        <li><a href="#"><p class="auditorium">Auditorium 1</p></a></li>
-                                        <li><a href="#"><p class="auditorium">Auditorium 2</p></a></li>
-                                        <li><a href="#"><p class="auditorium">Hall A1</p></a></li>
+                                        <li class="active"><a href="#/"><p >Auditorium 1</p></a></li>
+                                        <li><a href="#/"><p>Auditorium 2</p></a></li>
+                                        <li><a href="#/"><p>Hall A1</p></a></li>
                                     </ul>
                                 </div>
 
                                 <div class="auditorium-events">
                                     <div class="event">
-                                        <img src="" class="user-img">
+                                        <img src="images/speaker1.png" class="user-img">
                                         <div class="event-right">
                                             <div class="date-div">
                                                 <span>2:20 PM</span>
-                                                <a href="#"  class="float-right"><img src="images/plus.png"></a>
+                                                <a href="#/"  class="float-right" onclick="showDesc(this)"><img src="images/plus.png"></a>
                                             </div>
                                             <div class="title">Event registration & Breakfast
                                             </div>
-                                            <div class="description"></div>
+                                            <div class="description" style="display: none;">Nunc risus est nulla morbi, egestas lobortis dui maecenas lacinia qui 
+                                                adipiscing, eget purus morbi, pellentesque ipsum tortor ipsum. Tincidunt elit magnis nulla facilisis
+                                                . Dolor sagittis maecenas. Sapien nunc amet ultrices, dolores sit ipsum</div>
                                         </div>
                                     </div>
 
                                     <div class="event">
-                                        <img src="" class="user-img">
+                                        <img src="images/speaker2.png" class="user-img">
                                         <div class="event-right">
                                             <div class="date-div">
                                                 <span>3:00 PM</span>
-                                                <a href="#"  class="float-right"><img src="images/plus.png"></a>
+                                                <a href="#/"  class="float-right" onclick="showDesc(this)"><img src="images/plus.png"></a>
                                             </div>
                                             <div class="title">Scaling into crowded space
                                             </div>
-                                            <div class="description"></div>
+                                            <div class="description" style="display: none;">Nunc risus est nulla morbi, egestas lobortis dui maecenas 
+                                                lacinia qui adipiscing, eget purus morbi, pellentesque ipsum tortor ipsum. Tincidunt elit magnis nulla 
+                                                facilisis. Dolor sagittis maecenas. Sapien nunc amet ultrices, dolores sit ipsum</div>
                                         </div>
                                     </div>
 
-                                    <div class="event">
-                                            <img src="" class="user-img">
-                                            <div class="event-right">
+                                    <div class="event" >
+                                            <img src="images/speaker5.png" class="user-img">
+                                            <div class="event-right  no-border-bottom">
                                                 <div class="date-div">
                                                     <span>3:00 PM</span>
-                                                    <a href="#"  class="float-right"><img src="images/plus.png"></a>
+                                                    <a href="#/"  class="float-right" onclick="showDesc(this)"><img src="images/plus.png"></a>
                                                 </div>
                                                 <div class="title">Open your business around the world
                                                 </div>
-                                                <div class="description"></div>
+                                                <div class="description" style="display: none;">Nunc risus est nulla morbi, egestas lobortis dui maecenas lacinia qui adipiscing, 
+                                                    eget purus morbi, pellentesque ipsum tortor ipsum. Tincidunt elit magnis nulla facilisis. 
+                                                    Dolor sagittis maecenas. Sapien nunc amet ultrices, dolores sit ipsum</div>
                                             </div>
                                         </div>
                                 </div>
@@ -305,85 +312,75 @@
             <div class="past-speakers-main-wrapper">
                     <div class="container-centered">
                         <div class="past-speakers-child-wrapper">
-                            <h2>Past Speakers</h2>
-                            <div class="speakers-info-container">
-                                
-                                <div class="speakers-row">
+                            <h2>Past Speakers</h2>    
+
+                            <ul class="speakers-info-container">
+        
+                                <li class="speaker-info" id="thomas">
+                                    
+                                    <img src="images/speaker1.png">
     
-                                    <div class="float-left">
-                                        <div class="speaker-info float-left">
-                                            <div class="speaker-image" id="thomas">
-                                                <img src="images/speaker1.png">
+                                    <div class="bottom">
+                                        <p class="name">Thomas Abruzzi Martin</p>
+                                        <P class="job">CEO at Fan Solutions</P>
+                                    </div>
+                                    
+                                </li>
     
-                                                <div class="bottom">
-                                                    <p class="name">Thomas Abruzzi Martin</p>
-                                                    <P class="job">CEO at Fan Solutions</P>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="speaker-info float-right">
-                                            <div class="speaker-image" id="ken">
-                                                <img src="images/speaker2.png">
+                                <li class="speaker-info" id="ken">
+                                    
+                                        <img src="images/speaker2.png">
                                                 
-                                                <div class="bottom">
-                                                <p class="name">Ken Thompson</p>
-                                                <P class="job">Marketing Director at KGP Media</P></div>
-                                            </div>
+                                        <div class="bottom">
+                                            <p class="name">Ken Thompson</p>
+                                            <P class="job">Marketing Director at KGP Media</P>
                                         </div>
-                                    </div>
+                                </li>
+                                    
     
-                                    <div class="speaker-info float-right">
-                                        <div class="speaker-image" id="sandra">
-                                            <img src="images/speaker3.png">
+                                <li class="speaker-info" id="sandra">
+                                    
+                                        <img src="images/speaker3.png">
     
-                                            <div class="bottom">
+                                        <div class="bottom">
                                             <p class="name">Sandra Perry</p>
-                                            <P class="job">Senior Developer at Frontech Media Solutions</P></div>
+                                            <P class="job">Senior Developer at Frontech Media Solutions</P>
                                         </div>
-                                        
-                                    </div>
+                                                         
+                                </li>
     
-                                </div>
-    
-                                <div class="speakers-row">
-    
-                                    <div class="float-left">
-                                        <div class="speaker-info float-left">
-                                            <div class="speaker-image" id="brad">
-                                                <img src="images/speaker4.png">
+                                    
+                                <li class="speaker-info" id="brad">
+                                   
+                                        <img src="images/speaker4.png">
                                            
-                                                <div class="bottom">
-                                                <p class="name">Brad K. Jackson</p>
-                                                <P class="job">Senior Developer at Frontech Media</P></div>
-                                            </div>
+                                        <div class="bottom">
+                                            <p class="name">Brad K. Jackson</p>
+                                            <P class="job">Senior Developer at Frontech Media</P>
                                         </div>
+                                   
+                                </li>
     
-                                        <div class="speaker-info float-right">
-                                            <div class="speaker-image" id="barry">
-                                                <img src="images/speaker5.png">
-                                                <div class="bottom">
-                                                <p class="name">Barry Allen</p>
-                                                <P class="job">Marketing Director at KGP Media</P></div>
-                                            </div>
+                                <li class="speaker-info" id="barry">
+                                   
+                                        <img src="images/speaker5.png">
+                                        <div class="bottom">
+                                            <p class="name">Barry Allen</p>
+                                            <P class="job">Marketing Director at KGP Media</P>
                                         </div>
-                                    </div>
+                                   
+                                </li>
+                                    
     
-                                    <div class="speaker-info float-right">
-                                        <div class="speaker-image" id="eva">
-                                            <img src="images/speaker6.png">
-                                            <div class="bottom">
+                                <li class="speaker-info" id="eva">
+                                        <img src="images/speaker6.png">
+                                        <div class="bottom">
                                             <p class="name">Eva Theron</p>
-                                            <P class="job">CEO at Fan Solutions</P></div>
+                                            <P class="job">CEO at Fan Solutions</P>
                                         </div>
-                                        
-                                    </div>
-    
-                                </div>
-    
-    
-    
-                            </div>
+                                </li>
+                            
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -459,16 +456,15 @@
                     <h2>Hurry Up For Early Bird Tickets!</h2>
                     
                     <div class="early-counter">
-                            <div class="early-grid-container">
-                                <div class="float-left">
-                                    <div class="early-grid-item float-left"><span>14</span><p>Days</p></div>
-                                    <div class="early-grid-item float-right"><span>11</span><p>Hours</p></div>
-                                </div>
-                                <div class="float-right">
-                                    <div class="early-grid-item float-left"><span>30</span><p>Minutes</p></div>
-                                    <div class="early-grid-item-no-bg float-right"><span>43</span><p>Seconds</p></div>
-                                </div>
-                        </div>
+                            <ul class="early-grid-container">
+                                
+                                <li class="early-grid-item"><span>14</span><p>Days</p></li>
+                                <li class="early-grid-item"><span>11</span><p>Hours</p></li>                        
+                          
+                                <li class="early-grid-item"><span>30</span><p>Minutes</p></li>
+                                <li class="early-grid-item"><span>43</span><p>Seconds</p></li>
+                               
+                            </ul>
     
                     </div>
 
@@ -498,15 +494,15 @@
                         
                             <div class="sponsors-list-title">Platinum Sponsors</div>
                             <ul>
-                                <li><img src="images/sponsor1.png"></li>
+                                <li><a href=""><img src="images/sponsor1.png"></a></li>
                                 
-                                <li><img src="images/sponsor2.png"></li>
+                                <li><a href=""><img src="images/sponsor2.png"></a></li>
                                 
-                                <li><img src="images/sponsor3.png"></li>
+                                <li><a href=""><img src="images/sponsor3.png"></a></li>
                                 
-                                <li><img src="images/sponsor4.png"></li>
+                                <li><a href=""><img src="images/sponsor4.png"></a></li>
                                 
-                                <li><img src="images/sponsor5.png"></li>
+                                <li><a href=""><img src="images/sponsor5.png"></a></li>
                             </ul>
                         </div>
 
@@ -514,13 +510,13 @@
                         
                                 <div class="sponsors-list-title">Media Sponsors</div>
                                 <ul>
-                                    <li><img src="images/sponsor3.png"></li>
+                                    <li><a href=""><img src="images/sponsor3.png"></a></li>
                                     
-                                    <li><img src="images/sponsor4.png"></li>
+                                    <li><a href=""><img src="images/sponsor4.png"></a></li>
                                     
-                                    <li><img src="images/sponsor1.png"></li>
+                                    <li><a href=""><img src="images/sponsor1.png"></a></li>
                                     
-                                    <li><img src="images/sponsor2.png"></li>
+                                    <li><a href=""><img src="images/sponsor2.png"></a></li>
                                     
                                 </ul>
                             </div>
@@ -531,8 +527,9 @@
                
             </div>
 
-
-
+            <div class="container-centered">
+                <div class="carousel-container"></div>
+            </div>
 
 
             <div id="googleMap" class ="map"></div>
@@ -612,6 +609,47 @@
         </div>
 
         <script>
+
+            var vId = document.getElementById('header-video');
+            var pp = document.getElementById('play-pause');
+
+            function playVideo(){
+
+                if(pp.getAttribute('src') == 'images/play-button.png'){
+                    pp.src = 'images/pause-button.png';
+                    vId.play();
+                }
+
+                else if(pp.getAttribute('src') == 'images/pause-button.png'){
+                    pp.src = 'images/play-button.png';
+                    vId.pause();
+                }
+            }
+
+            function showHideMenu(){
+                var pMenu = document.getElementById('popup-menu');
+                
+                console.log('display'+ pMenu.style.display);
+
+                if(pMenu.style.display == 'none'){
+                    pMenu.style.display = 'block';
+                }
+                else{
+                    pMenu.style.display = 'none';
+                }
+            }
+
+            function showDesc(e){
+                var el = e.parentElement.parentElement.children[2];
+
+                if(el.style.display == 'none'){
+                    el.style.display = 'block';
+                }
+                else{
+                    el.style.display = 'none';
+                }
+            }
+
             function myMap() {
                 var mapProp= {
                     center:new google.maps.LatLng(51.508742,-0.120850),
@@ -619,10 +657,12 @@
                     };
                 var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
                 }
+
+            
         </script>
         
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYBdaNQ1sR5oHT4P-lNvjmOCQVt826nx4&callback=myMap"></script>
-
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvlZnvou7r97smH1tKOrMCarlerlm4H_s&callback=myMap"></script>
+        <script src="js/carousel.js"></script>
     </body>
 
 </html>

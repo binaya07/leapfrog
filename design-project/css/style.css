@@ -1,8 +1,7 @@
-
 * {
     box-sizing: border-box;
-  }
-  
+}
+
 a{
     text-decoration: none;
     display: block;
@@ -17,153 +16,189 @@ a{
     float: right;
 }
 
-.main-logo{
-    width: 160px;
-    height: 93px;
+
+.no-border-bottom{
+    border: none;
 }
 
-.header-top-right li{
-    float: left;
-    width: auto;
-    margin-right: 70px;
-}
-
-.header-top-menu{
-    margin-top: 33px;
-    float: left;
+.speakers-info-container{
     list-style: none;
 }
 
-.header-top-menu a{
-    font-size: 18px;
-    font-family: "Poppins";
+.stats-grid-container ul, 
+.early-grid-container{
+        list-style: none;
+}
+
+.stats-grid-item:last-child,
+.early-grid-item:last-child {
+    background: none;
+}
+
+.auditorium-tab .active a{
+    color: rgb(28, 29, 29);
+}
+
+.banner-button, .body-about-button, 
+.subscribe-contents-wrapper, .day-tab{
+    display: table;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.body-subscribe-main-wrapper, 
+.early-tickets-main-wrapper{
+    background-image: -moz-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
+    background-image: -webkit-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
+    background-image: -ms-linear-gradient( 135deg, rgb(240,71,74) 0%, rgb(253,175,25) 100%);
+
+}
+
+.sponsors-list{
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+    text-align: center;
+    border-top: 1px solid #e9e9e9;
+    border-top: 1px solid #e9e9e9;
+}
+
+.footer-top{
+    background-color: #1c1d1d;
+    color: white;
+}
+
+.testimonials-title{
+    text-align: center;
+}
+.event-sponsors-title{
+    text-align: center;
+}
+
+.copyright a{
+    color: rgb(206, 206, 206);
+    display: inline;
+    text-decoration: underline;
+    }
+
+.schedule-child-wrapper ul{
+        list-style: none;
+}
+
+.day-tab li{
+        float: left;
+        border-right: 1px solid #e9e9e9;
+}
+
+.header-top-menu{
+    display: none;
+}
+
+.main-logo{
+    width: 80px;
+    height: 45px;
 }
 
 .header-top-button{
     float: right;
-    margin-top: 9px;
-    font-size: 18px;
+    font-size: 12px;
     font-family: "Poppins";
     font-weight: bold;
     color: white;
 }
 
-.header-top-button a:hover{
-    border: 2px solid #f0474a;
-    background-color: #f0474a;
-}
-
 .header-top-button a{
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 53px;
-    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     border: 2px solid white;
     border-radius: 30px;
+}
+
+.menu-mobile{
+    float: left;
+    margin-right: 25px;
+    line-height: 55px;
 }
 
 .banner-date-venue img{
     margin-left: 10px;
     margin-right: 10px;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
+
+
+.banner-grid-item span,
+.early-grid-item span, 
+.stats-grid-item span{
+    font-size: 25px;
+    font-family: "Poppins";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.banner-grid-item p,
+.early-grid-item p, 
+.stats-grid-item p{
+    font-size: 15px;
+    font-family: "Poppins";
+    color: rgb(255, 255, 255);
+}
+
 .learn-more-button a{
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 30px;
+    border: 2px solid white;
+    display: inline;
 }
 
 .buy-ticket-button a{
     color: black;
-    padding-left: 50px;
-    padding-right: 78px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-left: 25px;
+    padding-right: 50px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     border-radius: 30px;
     background: url('../images/black-arrow.png');
-    background-position: 220px;
+    background-position: 140px;
     background-repeat: no-repeat;
     background-color: #fdaf19;
-
 }
 
+.body-about h2{  
+    font-size: 25px;
+    font-family: "PlayfairDisplay";
+    color: rgb(28, 29, 29);
+    font-weight: bold;    
+}
 
-.buy-ticket-button a:hover{
-    color:white;
-    background: url('../images/white-arrow.png');
-    background-position: 220px;
-    background-repeat: no-repeat;
-    background-color: #f0474a;
+.attend-button{
+    margin-right: 0px;
+    margin-bottom: 10px;
+    float: none;
+}
+
+.sponsor-button{
+    float: none;
+}
+
+.attend-button a, .sponsor-button a{
+    border: 2px solid red;
+    color: black;
+    font-size: 12px;
+    font-family: "Poppins";
+    color: rgb(28, 29, 29);
+    font-weight: bold;
+    line-height: 30px;
+    padding-left: 25px;
+    padding-right: 25px;
     border-radius: 30px;
 }
 
-.copyright a{
-   color: rgb(206, 206, 206);
-   display: inline;
-   text-decoration: underline;
-}
-
-.conference-and-events,.footer-top .links,
-.footer-top .instagram{
-    font-size: 22px;
-    font-family: "PlayfairDisplay";
-    color: white;
-    font-weight: bold;
-    margin-bottom: 30px;
-  }
-
-  .footer-top-left .left p{
-    display: inline-block;
-    font-size: 16px;
-    font-family: "Poppins";
-    color: rgb(206, 206, 206);
-  }
-  
-  .footer-top-left ul{
-    list-style: none;
-  }
-  
-  .sponsors-list ul{
-    list-style: none;
-    margin-top: 75px;
-    margin-bottom: 75px;
-  }
-  .sponsors-list li{
-      float: left;
-      margin-right: 100px;
-  }
-
-  .sponsors-list img{
-      width: 170px;
-      height: 115px;
-  }
-
-  .sponsors-list li:last-child{
-      margin-right: none;
-  }
-
-  .footer-top-left .left ul{
-      margin-top: 37px;
-  }
-
-  
-.footer-top-left .left li{
-    float: left;
-    margin-right: 25px;
-}
-
-
-.footer-top-left .right a{
-    font-size: 16px;
-    font-family: "Poppins";
-    color: rgb(206, 206, 206);
-}
-
-
-.footer-top-left .right li{
-    margin-bottom: 15px;
-}
 
 .footer-top-right ul{
     list-style: none;
@@ -176,103 +211,88 @@ a{
 }
 
 .footer-top-right img{
-    height: 80px;
-    width: 80px;
+    height: 60px;
+    width: 60px;
     object-fit: cover;
 }
 
-.banner-grid-item span, .banner-grid-item-no-bg span,
-.early-grid-item span, .early-grid-item-no-bg span,
-.stats-grid-item span, .stats-grid-item-no-bg span{
-    font-size: 40px;
-    font-family: "Poppins";
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-}
-
-.banner-grid-item p, .banner-grid-item-no-bg p,
-.early-grid-item p, .early-grid-item-no-bg p,
-.stats-grid-item p, .stats-grid-item-no-bg p{
-    font-size: 20px;
-    font-family: "Poppins";
-    color: rgb(255, 255, 255);
-  }
-
-.body-about h2{  
-     font-size: 50px;
-    font-family: "PlayfairDisplay";
-    color: rgb(28, 29, 29);
-    font-weight: bold;    
-}
-
-.attend-button{
-    margin-right: 30px;
-}
-
-.attend-button a, .sponsor-button a{
-    border: 2px solid red;
-    color: black;
+.conference-and-events,.footer-top .links,
+.footer-top .instagram{
     font-size: 18px;
-    font-family: "Poppins";
-    color: rgb(28, 29, 29);
+    font-family: "PlayfairDisplay";
+    color: white;
     font-weight: bold;
-    line-height: 60px;
-    padding-left: 50px;
-    padding-right: 50px;
-    border-radius: 30px;
+    margin-bottom: 15px;
 }
 
-.attend-button a:hover, .sponsor-button a:hover{
-    border: none;
-    color: white;
-    background-color: red;
+.footer-top-left .left p{
+    display: inline-block;
+    font-size: 12px;
+    font-family: "Poppins";
+    color: rgb(206, 206, 206);
+}
+
+.footer-top-left ul{
+    list-style: none;
+}
+
+.footer-top-left .left ul{
+    margin-top: 15px;
+    display: table;
+    margin-bottom: 15px;
+}
+.footer-top-left .left li{
+    float: left;
+    margin-right: 15px;
+}
+
+.footer-top-left .right a{
+    font-size: 12px;
+    font-family: "Poppins";
+    color: rgb(206, 206, 206);
+}
+
+.footer-top-left .right li{
+    margin-bottom: 5px;
 }
 
 .subscribe-contents-wrapper p{
-    font-size: 40px;
+    font-size: 25px;
     font-family: "PlayfairDisplay";
     color: rgb(255, 255, 255);
     font-weight: bold;  
-    float: left;
-    margin-top: 75px;
-    margin-bottom: 65px;
+    float: none;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 .subscribe-input{
-    margin-top: 70px;
-    margin-bottom: 70px;
+    margin-top: 0px;
+    margin-bottom: 30px;
     border: 2px solid white;
     border-radius: 30px;
     height: 60px;
     color: white;
-    float: right;
-    padding-left: 40px;
-    padding-right: 80px;
-    width: 390px;
-    margin-left: 41px;
-    font-size: 18px;
+    float: none;
+    padding-left: 20px;
+    padding-right: 50px;
+    width: 280px;
+    margin-left: 0px;
+    font-size: 12px;
     font-family: "Poppins";
     background: url("../images/email.png");
     background-repeat: no-repeat;
-    background-position: 330px 20px;
+    background-position: 240px 20px;
 }
 
 .map{
     width: 100%;
-    height: 700px;
-}
-
-.early-tickets-main-wrapper h2{
-    padding-top: 115px;
-    text-align: center;
-    color: white;
-    font-size: 40px;
-    font-family: "PlayfairDisplay";
-    font-weight: bold;
+    height: 300px;
 }
 
 .event-sponsors-title h2{
-    font-size: 40px;
+    font-size: 25px;
     font-family: "PlayfairDisplay";
     color: rgb(28, 29, 29);
     font-weight: bold;
@@ -280,151 +300,181 @@ a{
 
 .event-sponsors-title p{
     display: block;
-    margin-top: 20px;
-    margin-bottom: 60px;
-    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 12px;
     font-family: "Poppins";
     color: rgb(28, 29, 29);
 }
 
 .sponsors-list-title{
-    margin-top: 60px;
-    font-size: 24px;
+    margin-top: 30px;
+    font-size: 18px;
     font-family: "PlayfairDisplay";
     color: rgb(28, 29, 29);
+    font-weight: bold;
+}
+
+.sponsors-list ul{
+    list-style: none;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+.sponsors-list li{
+    float: left;
+    margin-right: 20px;
+}
+
+.sponsors-list img{
+    width: 80px;
+    height: 70px;
+}
+
+.sponsors-list li:last-child{
+    margin-right: none;
+}
+
+.confirmed-speakers-child-wrapper h2,
+.past-speakers-child-wrapper h2{
+    text-align: center;
+    font-size: 25px;
+    font-family: "PlayfairDisplay";
+    color: rgb(28, 29, 29);
+    font-weight: bold;
+}
+
+
+.speaker-info img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-position: center;
+    object-fit: cover;
+    }
+
+.speaker-info .name{
+    color: white;
+    font-size: 22px;
+    font-family: "PlayfairDisplay";
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+
+.speaker-info .job{
+    display: table-cell;
+    vertical-align: bottom;
+    color: white;
+    font-size: 14px;
+    font-family: "Poppins";
+}
+
+.early-tickets-main-wrapper h2{
+    padding-top: 30px;
+    text-align: center;
+    color: white;
+    font-size: 25px;
+    font-family: "PlayfairDisplay";
     font-weight: bold;
 }
 
 .testimonials-title h2{
-    font-size: 40px;
+    font-size: 25px;
     font-family: "PlayfairDisplay";
     color: rgb(28, 29, 29);
     font-weight: bold;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .testimonials-title p{
-    font-size: 20px;
+    font-size: 14px;
     font-family: "Poppins";
     color: rgb(28, 29, 29);
 }
-  
+
 .testimonial-text-box .quote{
     margin-bottom: 16px;
-    font-size: 18px;
+    font-size: 16px;
     font-family: "Myriad Pro";
     color: rgb(28, 29, 29);
     line-height: 1.778;
 }
 
 .testimonial-text-box .name{
-    font-size: 18px;
+    font-size: 12px;
     font-family: "Poppins";
     color: rgb(28, 29, 29);
     font-weight: bold;
-  }
+}
 
 .testimonial-text-box .address{
-    font-size: 16px;
+    font-size: 12px;
     font-family: "Poppins";
     color: rgb(28, 29, 29);
-  }
-
-  .confirmed-speakers-child-wrapper h2,
-  .past-speakers-child-wrapper h2{
-    text-align: center;
-    font-size: 40px;
-    font-family: "PlayfairDisplay";
-    color: rgb(28, 29, 29);
-    font-weight: bold;
-  }
-
-  .speaker-image img{
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      object-position: center;
-      object-fit: cover;
-    }
-
-.speaker-info .name{
-    color: white;
-    font-size: 30px;
-    font-family: "PlayfairDisplay";
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-
-  
-  .speaker-info .job{
-    display: table-cell;
-    vertical-align: bottom;
-    color: white;
-    font-size: 16px;
-    font-family: "Poppins";
 }
 
 .schedule-title img{
-    width: 82px;
-    height: 77px;
+    width: 40px;
+    height: 40px;
 }
 
 .schedule-title h2{
-    margin-top: 29px;
-    margin-bottom: 25px;
-    font-size: 40px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 25px;
     font-family: "PlayfairDisplay";
     color: rgb(28, 29, 29);
     font-weight: bold;
 }
 
 .schedule-title p{
-    font-size: 20px;
+    font-size: 14px;
     font-family: "Poppins";
     color: rgb(28, 29, 29);
-}
-
-.schedule-child-wrapper ul{
-    list-style: none;
-}
-
-.day-tab li{
-    float: left;
-    border-right: 1px solid #e9e9e9;
 }
 
 .schedule-main-block li:last-child{
     border-right: none
 }
 
+
 .day-tab a{
-    padding-left: 48px;
-    padding-right: 48px;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-top: 6px;
     padding-bottom: 6px;
     color: black;
 }
 
-.day-tab a:hover{
+.day-tab .day-active{
     color: rgb(240, 71, 74);
+    font-size: 15px;
+    font-family: "Poppins";
+    font-weight: bold;
+}
 
+.day-tab .date-active{
+    font-size: 11px;
+    font-family: "Poppins";
+    line-height: 2.571;
+    color: rgba(243, 110, 112, 0.8);
 }
 
 .day-tab .day {
-    font-size: 22px;
+    font-size: 15px;
     font-family: "Poppins";
     font-weight: bold;
 }
 
 .day-tab .date {
-    font-size: 14px;
+    font-size: 11px;
     font-family: "Poppins";
     line-height: 2.571;
-  }
-  
+}
+
 .auditorium-tab li{
     float: left;
     background-color: #f3f3f3;
@@ -436,32 +486,520 @@ a{
     border-bottom-left-radius: 30px;
 }
 
+
 .auditorium-tab li:last-child{
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
-    padding-right: 40px;
+    padding-right: 20px;
 }
 
 .auditorium-tab a{
-    padding-top: 18px;
-    padding-bottom: 18px;
-    padding-left: 40px;
-    font-size: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 20px;
+    font-size: 12px;
     font-family: "Poppins";
     color: rgba(28, 29, 29, 0.702);
-   
+
     font-weight: bold;
 }
 
-.auditorium-tab a:hover{
-    color: rgb(28, 29, 29);;
-}
 
 .auditorium-events .user-img{
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background-color: black;
+    object-fit: cover;
+}
+
+@media(min-width: 992px){
+
+    .main-logo{
+        width: 160px;
+        height: 93px;
+    }
+
+    .header-top-right li{
+        float: left;
+        width: auto;
+    }
+
+    .header-top-right li:last-child{
+        margin-right: 35px;
+    }
+
+    .menu-mobile{
+        display: none;
+    }
+
+    .header-top-menu{
+        margin-top: 33px;
+        float: left;
+        list-style: none;
+        display: block;
+    }
+
+    .header-top-menu a{
+        font-size: 18px;
+        font-family: "Poppins";
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+
+    .header-top-menu a:hover{
+        background-color: #f0474a;
+    }
+
+    .header-top-button{
+        float: right;
+        margin-top: 9px;
+        font-size: 18px;
+        font-family: "Poppins";
+        font-weight: bold;
+        color: white;
+    }
+
+    .header-top-button a:hover{
+        border: 2px solid #f0474a;
+        background-color: #f0474a;
+    }
+
+    .header-top-button a{
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 53px;
+        padding-right: 50px;
+        border: 2px solid white;
+        border-radius: 30px;
+    }
+
+    .banner-date-venue img{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 6px;
+    }
+    .learn-more-button a{
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-radius: 30px;
+        display: block;
+        border: none;
+    }
+
+    .learn-more-button a:hover{
+        background-color: #119923;
+    }
+
+    .buy-ticket-button a{
+        color: black;
+        padding-left: 50px;
+        padding-right: 78px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-radius: 30px;
+        background: url('../images/black-arrow.png');
+        background-position: 220px;
+        background-repeat: no-repeat;
+        background-color: #fdaf19;
+
+    }
+
+
+    .buy-ticket-button a:hover{
+        color:white;
+        background: url('../images/white-arrow.png');
+        background-position: 220px;
+        background-repeat: no-repeat;
+        background-color: #f0474a;
+        border-radius: 30px;
+    }
+
+
+    .conference-and-events,.footer-top .links,
+    .footer-top .instagram{
+        font-size: 22px;
+        font-family: "PlayfairDisplay";
+        color: white;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    .footer-top-left .left p{
+        display: inline-block;
+        font-size: 16px;
+        font-family: "Poppins";
+        color: rgb(206, 206, 206);
+    }
+    
+    .footer-top-left ul{
+        list-style: none;
+    }
+    
+    .sponsors-list ul{
+        list-style: none;
+        margin-top: 75px;
+        margin-bottom: 75px;
+    }
+    .sponsors-list li{
+        float: left;
+        margin-right: 100px;
+    }
+
+    .sponsors-list img{
+        width: 170px;
+        height: 115px;
+    }
+
+    .sponsors-list li:last-child{
+        margin-right: none;
+    }
+
+    .footer-top-left .left ul{
+        margin-top: 37px;
+        margin-bottom: 0px;
+    }
+
+    
+    .footer-top-left .left li{
+        float: left;
+        margin-right: 25px;
+    }
+
+
+    .footer-top-left .right a{
+        font-size: 16px;
+        font-family: "Poppins";
+        color: rgb(206, 206, 206);
+    }
+
+    .footer-top-left .right a:hover{
+        color: #f77d31;
+    }
+
+
+    .footer-top-left .right li{
+        margin-bottom: 15px;
+    }
+
+    .footer-top-right ul{
+        list-style: none;
+        margin-bottom: 16px;
+    }
+
+    .footer-top-right li{
+        float: left;
+        margin-right: 16px;
+    }
+
+    .footer-top-right img{
+        height: 80px;
+        width: 80px;
+        object-fit: cover;
+    }
+
+    .banner-grid-item span,
+    .early-grid-item span, 
+    .stats-grid-item span{
+        font-size: 40px;
+        font-family: "Poppins";
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+    }
+
+    .banner-grid-item p,
+    .early-grid-item p, 
+    .stats-grid-item p{
+        font-size: 20px;
+        font-family: "Poppins";
+        color: rgb(255, 255, 255);
+    }
+
+    .body-about h2{  
+        font-size: 50px;
+        font-family: "PlayfairDisplay";
+        color: rgb(28, 29, 29);
+        font-weight: bold;    
+    }
+
+    .attend-button{
+        margin-right: 30px;
+        margin-bottom: 0px;
+        float: left;
+    }
+
+    .sponsor-button{
+        float: right;
+    }
+
+    .attend-button a, .sponsor-button a{
+        border: 2px solid red;
+        color: black;
+        font-size: 18px;
+        font-family: "Poppins";
+        color: rgb(28, 29, 29);
+        font-weight: bold;
+        line-height: 60px;
+        padding-left: 50px;
+        padding-right: 50px;
+        border-radius: 30px;
+    }
+
+    .attend-button a:hover, .sponsor-button a:hover{
+        border: none;
+        color: white;
+        border: 2px solid red;
+        background-color: red;
+    }
+
+    .subscribe-contents-wrapper p{
+        font-size: 40px;
+        font-family: "PlayfairDisplay";
+        color: rgb(255, 255, 255);
+        font-weight: bold;  
+        float: left;
+        margin-top: 75px;
+        margin-bottom: 65px;
+    }
+
+    .subscribe-input{
+        margin-top: 70px;
+        margin-bottom: 70px;
+        border: 2px solid white;
+        border-radius: 30px;
+        height: 60px;
+        color: white;
+        float: right;
+        padding-left: 40px;
+        padding-right: 80px;
+        width: 390px;
+        margin-left: 41px;
+        font-size: 18px;
+        font-family: "Poppins";
+        background: url("../images/email.png");
+        background-repeat: no-repeat;
+        background-position: 330px 20px;
+    }
+
+    .map{
+        width: 100%;
+        height: 700px;
+    }
+
+    .early-tickets-main-wrapper h2{
+        padding-top: 115px;
+        text-align: center;
+        color: white;
+        font-size: 40px;
+        font-family: "PlayfairDisplay";
+        font-weight: bold;
+    }
+
+    .event-sponsors-title h2{
+        font-size: 40px;
+        font-family: "PlayfairDisplay";
+        color: rgb(28, 29, 29);
+        font-weight: bold;
+    }
+
+    .event-sponsors-title p{
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 60px;
+        font-size: 20px;
+        font-family: "Poppins";
+        color: rgb(28, 29, 29);
+    }
+
+    .sponsors-list-title{
+        margin-top: 60px;
+        font-size: 24px;
+        font-family: "PlayfairDisplay";
+        color: rgb(28, 29, 29);
+        font-weight: bold;
+    }
+
+    .testimonials-title h2{
+        font-size: 40px;
+        font-family: "PlayfairDisplay";
+        color: rgb(28, 29, 29);
+        font-weight: bold;
+        margin-bottom: 25px;
+    }
+
+    .testimonials-title p{
+        font-size: 20px;
+        font-family: "Poppins";
+        color: rgb(28, 29, 29);
+    }
+    
+    .testimonial-text-box .quote{
+        margin-bottom: 16px;
+        font-size: 18px;
+        font-family: "Myriad Pro";
+        color: rgb(28, 29, 29);
+        line-height: 1.778;
+    }
+
+    .testimonial-text-box .name{
+        font-size: 18px;
+        font-family: "Poppins";
+        color: rgb(28, 29, 29);
+        font-weight: bold;
+    }
+
+    .testimonial-text-box .address{
+        font-size: 16px;
+        font-family: "Poppins";
+        color: rgb(28, 29, 29);
+    }
+
+    .confirmed-speakers-child-wrapper h2,
+    .past-speakers-child-wrapper h2{
+        text-align: center;
+        font-size: 40px;
+        font-family: "PlayfairDisplay";
+        color: rgb(28, 29, 29);
+        font-weight: bold;
+    }
+
+    .speaker-info img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        object-position: center;
+        object-fit: cover;
+        }
+
+    .speaker-info .name{
+        color: white;
+        font-size: 30px;
+        font-family: "PlayfairDisplay";
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    
+    .speaker-info .job{
+        display: table-cell;
+        vertical-align: bottom;
+        color: white;
+        font-size: 16px;
+        font-family: "Poppins";
+    }
+
+    .schedule-title img{
+        width: 82px;
+        height: 77px;
+    }
+
+    .schedule-title h2{
+        margin-top: 29px;
+        margin-bottom: 25px;
+        font-size: 40px;
+        font-family: "PlayfairDisplay";
+        color: rgb(28, 29, 29);
+        font-weight: bold;
+    }
+
+    .schedule-title p{
+        font-size: 20px;
+        font-family: "Poppins";
+        color: rgb(28, 29, 29);
+    }
+
+    .schedule-main-block li:last-child{
+        border-right: none
+    }
+
+    .day-tab a{
+        padding-left: 48px;
+        padding-right: 48px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        color: black;
+    }
+
+    .day-tab a:hover .day{
+        color: rgb(240, 71, 74);
+
+    }
+
+    .day-tab a:hover .date{
+        color: rgba(243, 110, 112, 0.8);
+    }
+
+    .day-tab .day-active{
+        color: rgb(240, 71, 74);
+        font-size: 22px;
+        font-family: "Poppins";
+        font-weight: bold;
+    }
+
+    .day-tab .date-active{
+        font-size: 14px;
+        font-family: "Poppins";
+        line-height: 2.571;
+        color: rgba(243, 110, 112, 0.8);
+    }
+
+    .day-tab .day {
+        font-size: 22px;
+        font-family: "Poppins";
+        font-weight: bold;
+    }
+
+    .day-tab .date {
+        font-size: 14px;
+        font-family: "Poppins";
+        line-height: 2.571;
+    }
+    
+    .auditorium-tab li{
+        float: left;
+        background-color: #f3f3f3;
+        border: 1px solid #f3f3f3;
+    }
+
+    .auditorium-tab li:first-child{
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+    }
+
+
+    .auditorium-tab li:last-child{
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+        padding-right: 40px;
+    }
+
+    .auditorium-tab a{
+        padding-top: 18px;
+        padding-bottom: 18px;
+        padding-left: 40px;
+        font-size: 16px;
+        font-family: "Poppins";
+        color: rgba(28, 29, 29, 0.702);
+    
+        font-weight: bold;
+    }
+
+    .auditorium-tab a:hover{
+        color: rgb(28, 29, 29);;
+    }
+
+    .auditorium-events .user-img{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: black;
+        object-fit: cover;
+
+    }
 
 }
-  
