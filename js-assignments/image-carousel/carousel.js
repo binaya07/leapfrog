@@ -36,7 +36,8 @@ function slider(imageSourceList = [], transitionTime, holdTime){
         this.addRightButton();
         this.addIndicators();
 
-        this.transitionInterval = (transitionTime * 1000 / this.containerWidth);
+        this.transitionInterval =  (transitionTime * 1000) / this.containerWidth;
+
         
         //console.log(this.transitionInterval);
 
@@ -184,7 +185,8 @@ function slider(imageSourceList = [], transitionTime, holdTime){
         if (this.nextSliderLeftPosition <= this.MINIMUM_LEFT_POSITION){
             this.nextSliderLeftPosition = 0;
 
-            
+            console.log(this.transitionInterval);
+
             var id1= setInterval(frame1.bind(this), this.transitionInterval);
             
             function frame1(){
