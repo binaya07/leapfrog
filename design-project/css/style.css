@@ -513,6 +513,45 @@ a{
     object-fit: cover;
 }
 
+
+@media(min-width: 600px)
+{
+    
+    .main-logo{
+        width: 120px;
+        height: 65px;
+    }
+
+    .header-top-button{
+        float: right;
+        margin-top: 5px;
+        font-size: 15px;
+        font-family: "Poppins";
+        font-weight: bold;
+        color: white;
+    }
+   
+    .menu-mobile{
+        line-height: 75px;
+}
+
+
+.buy-ticket-button a{
+    padding-right: 50px;
+    background-position: 160px;
+
+}
+
+.body-about h2{
+    font-size: 30px;
+}
+
+.attend-button a, .sponsor-button a{
+    font-size: 14px;
+}
+
+}
+
 @media(min-width: 992px){
 
     .main-logo{
