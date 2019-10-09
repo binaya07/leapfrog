@@ -1,0 +1,41 @@
+*{
+    box-sizing: border-box;
+}
+
+.box-container{
+    width: 80%;
+    height: 600px;
+    margin-left: 4%;
+    margin-bottom: 50px;
+    float: left;
+    border: 2px solid red;
+    background-color: white;
+    position: relative;
+}
+
+.score{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    font-size: 30px;
+    color: green;
+}
+
+#scoreCount{
+    color: blue;
+}
+
+@media (max-width: 768px){
+        
+    .box-container{
+        width: 80%;
+        height: 500px;
+        margin-left: 5%;
+        float: left;
+        margin-bottom: 20px;
+        border: 2px solid red;
+        position: relative;
+    }
+
+}
