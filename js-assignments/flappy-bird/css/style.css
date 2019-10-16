@@ -1,0 +1,24 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+@font-face{
+    font-family: myFont;
+    src: url(04B_19__.TTF);
+}
+
+body{
+    background-color: black;
+}
+
+.game-container{
+    font-family: myFont;
+    width: 500px;
+    height: 650px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
