@@ -27,15 +27,27 @@ function Game(){
     this.highScore = 0;
 
     this.init = function(){  
-        this.container = document.getElementsByClassName('game-container')[0];
-        var containerStyle = getComputedStyle(this.container);
-        this.containerWidth = parseInt(containerStyle.width);
-        this.containerHeight = parseInt(containerStyle.height);
+    //     this.container = document.getElementsByClassName('game-container')[0];
+    //     var containerStyle = getComputedStyle(this.container);
+    //     this.containerWidth = parseInt(containerStyle.width);
+    //     this.containerHeight = parseInt(containerStyle.height);
 
+        this.addContainer();
         this.addBackgroundWrapper();
         this.addForegroundWrapper();
 
         this.firstScreen();
+    }
+
+    this.addContainer = function(){
+        this.container = document.createElement('div');
+        this.container.classList.add('game-container');
+
+        document.body.appendChild(this.container);
+        
+        var containerStyle = getComputedStyle(this.container);
+        this.containerWidth = parseInt(containerStyle.width);
+        this.containerHeight = parseInt(containerStyle.height);
     }
 
     this.firstScreen = function(){
@@ -395,3 +407,4 @@ function Game(){
 }
 
 var game = new Game().init();
+var game1 = new Game().init();
