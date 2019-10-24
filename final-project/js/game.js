@@ -1,6 +1,8 @@
 
 class Game{
-    constructor(){
+    constructor(chess){
+        this.chess = chess;
+
         this.boardContainer = document.getElementsByClassName('board')[0];
 
         this.boardContainer.onclick = this.checkClick;
@@ -89,7 +91,7 @@ class Game{
                         break;
                     
                     case PIECES.w_n:
-                        var img = this.addPiece('white', 'knight', 'images/wn.png');
+                        var img = this.addPiece('white', 'knight', 'images/wN.png');
                         col.appendChild(img); 
                         break;
                 
@@ -141,6 +143,30 @@ class Game{
 
         var el = e.target;
         
-        console.log(el.getAttribute('class'));
+        var x = el.parentElement.getAttribute('id');
+        console.log(el.getAttribute('class').split(" "));
+        console.log(x);
+    }
+
+    play(){
+
+        var b = Utils.convertArray120To64(chess.board);
+        
+        game.removeBoard();
+        game.addBoard(b);
+        
+        var pMoves = chess.getPseudoLegalMoves();
+
+        var ind = parseInt(Math.random() * pMoves.length - 1);
+        
+        chess.makeMove(pMoves[ind]);
+        
+        game.removeBoard();
+
+        var b = Utils.convertArray120To64(chess.board);
+
+        game.addBoard(b);
+
+        
     }
 }

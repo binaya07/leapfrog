@@ -76,8 +76,8 @@ class Utils{
         var turn = sub[1];
         var castlingInfo = sub[2];
         var enPassantTarget = sub[3];
-        var halfmoveClock = sub[4];
-        var fullMoveNumber = sub[5];
+        var halfmoveClock = parseInt(sub[4]);
+        var fullMoveNumber = parseInt(sub[5]);
 
         return [board, turn, castlingInfo, enPassantTarget, halfmoveClock, fullMoveNumber];
     }

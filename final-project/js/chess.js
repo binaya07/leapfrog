@@ -9,6 +9,8 @@ class Chess{
         
         [this.board, this.turn, this.castlingInfo, this.enPassantTarget, this.halfmoveClock, this.fullMoveNumber] = Utils.parseFen(this.fen);
         
+        this.enPassantTarget = SQUARES[this.enPassantTarget.toUpperCase()];
+
         this.setIndexAndPieces();
 
         this.castlingInfo = this.castlingInfo.split("");
@@ -116,7 +118,71 @@ class Chess{
         // TODO: check en passant
         // implement pawn attacks below
         var pawnMoves = [];
+        var currentIndex;
+        var nextIndex;
 
+        for(var i = RANKS.RANK_1; i <= RANKS.RANK_8; i++){
+            for(var j = FILES.FILE_A; j <= FILES.FILE_H; j++){
+
+                currentIndex = 20 + i * 10 + j + 1;
+
+                if(this.board[currentIndex] == this.currentPieces[0]){
+                    // check for white pawns
+                    if(this.currentPieces[0] == PIECES.w_p){
+
+                        // checking attack moves and enPassant 
+                        for(var k = 0; k < WHITE_PAWN_ATTACKS.length; k++){
+                            nextIndex = currentIndex + WHITE_PAWN_ATTACKS[k];
+                            
+                            if(this.opponentPieces.includes(this.board[nextIndex]) || nextIndex == this.enPassantTarget){
+                                pawnMoves.push([currentIndex, nextIndex]);
+                            }
+                        }
+                        
+                        // checking normal moves
+                        nextIndex = currentIndex - 10;
+                        if(this.board[nextIndex] == PIECES.EMPTY){
+                            pawnMoves.push([currentIndex, nextIndex]);
+                        }
+
+                        // check double moves
+                        if(parseInt(currentIndex / 10) == 8){
+                            nextIndex = currentIndex - 20;
+                            if(this.board[nextIndex] == PIECES.EMPTY && this.board[nextIndex + 10] == PIECES.EMPTY){
+                                pawnMoves.push([currentIndex, nextIndex]);
+                            }
+                        }
+                    }
+                    // check for black pawns
+                    else{
+
+                        // checking attack moves and enPassant
+                        for(var k = 0; k < BLACK_PAWN_ATTACKS.length; k++){
+                            nextIndex = currentIndex + BLACK_PAWN_ATTACKS[k];
+                            
+                            if(this.opponentPieces.includes(this.board[nextIndex]) || nextIndex == this.enPassantTarget){
+                                pawnMoves.push([currentIndex, nextIndex]);
+                            }
+                        }
+                        
+                        // checking normal moves
+                        nextIndex = currentIndex + 10;
+                        if(this.board[nextIndex] == PIECES.EMPTY){
+                            pawnMoves.push([currentIndex, nextIndex]);
+                        }
+
+                        // check double moves
+                        if(parseInt(currentIndex / 10) == 3){
+                            nextIndex = currentIndex + 20;
+                            if(this.board[nextIndex] == PIECES.EMPTY && this.board[nextIndex - 10] == PIECES.EMPTY){
+                                pawnMoves.push([currentIndex, nextIndex]);
+                            }
+                        }
+                    }
+                } 
+            }
+        }
+        
         return pawnMoves;
     }
 
@@ -369,19 +435,156 @@ class Chess{
         return moves;
     }
 
-    getNextAttackedPosiitons(){
+    getNextAttackedPositions(){
         // same as calculated above .. but for reason of sending to another move
+        
+        //TODO: check whether this is correct after pawn promotion move
+
+        var moves = this.getAllMovesExceptPawnAndCastle();
+        moves.push.apply(moves, this.getPawnAttacksOnly());
+
+        var attackedPositions = new Set();
+
+        for(var i = 0; i < moves.length; i++){
+             attackedPositions.add(moves[i][1]);
+        }
+
+        return attackedPositions;
     }
 
-    makeMove(){
+    makeMove(move){
         // TODO: makes move .. update board, turn, castling info .. basically fen string .. return fen .. 
-        // TODO: check pawn promotion , en passant
+
+        // IMP : TODO: check next attacked positions after pawn promotion move, -- maybe it should be calculated after the move
+        
         // if king moves..castling is void for that side and if rook moves or is captured
         // maybe keep track of captured pieces [to show in UI] -- keep track from main
         // if move = [95, 97] or [95, 93] or similar for black and 95 == 'K' then it's castle move
 
 
         // remove fen from cosntructor .. update all and play same instance
+
+        var src = move[0];
+        var dest = move[1];
+        var moved = false;
+        var pawnpromote = false;
+
+        if(this.board[src] != this.currentPieces[0] && this.board[dest] == PIECES.EMPTY){
+            this.halfmoveClock++;
+        }
+        else{
+            this.halfmoveClock = 0;
+        }
+
+        // update pawn en passant, pawn promotion
+        if(this.board[src] == PIECES.w_p){
+            if((dest - src) % 10 != 0){
+                this.board[dest] = this.board[src];
+                this.board[src] = PIECES.EMPTY;
+                this.board[dest + 10] = PIECES.EMPTY;
+
+                moved = true;
+            }
+            if(parseInt(dest / 10) == 2){
+                this.board[dest] = PIECES.w_q;
+                this.board[src] = PIECES.EMPTY;
+                moved = true;
+                pawnpromote = true;
+            }
+
+            // en passant update
+            if(Math.abs(dest - src) == 20){
+                this.enPassantTarget = dest + 10;
+            }
+        }
+        
+        if(this.board[src] == PIECES.b_p){
+            if((dest - src) % 10 != 0){
+                this.board[dest] = this.board[src];
+                this.board[src] = PIECES.EMPTY;
+                this.board[dest - 10] = PIECES.EMPTY;
+                moved = true;
+            }
+            if(parseInt(dest / 10) == 9){
+                this.board[dest] = PIECES.b_q;
+                this.board[src] = PIECES.EMPTY;
+                moved = true;
+                pawnpromote = true;
+            }
+            
+            // en passant update
+            if(Math.abs(dest - src) == 20){
+                this.enPassantTarget = dest - 10;
+            }
+        }
+        
+        // check castling
+        var castleDir = dest - src;
+        if(src == this.kingIndex && Math.abs(castleDir) == 2){
+
+            this.board[dest] = this.board[src];
+            moved = true;
+
+            if(castleDir > 0){
+                this.board[dest - 1] = this.currentPieces[3];
+                this.board[dest + 1] = PIECES.EMPTY;
+            }
+            else{
+                this.board[dest + 1] = this.currentPieces[3];
+                this.board[dest - 2] = PIECES.EMPTY;
+            }
+        }
+
+        // make move if not already moved
+        if(!moved){
+            this.board[dest] = this.board[src];
+            this.board[src] = PIECES.EMPTY;
+        }
+
+        // update other info
+        if(this.turn == COLORS.WHITE){
+            if(this.castlingInfo[0] != '-' || this.castlingInfo[1] != '-'){
+                
+                if(src == this.kingIndex){
+                    this.castlingInfo[0] = '-';
+                    this.castlingInfo[1] = '-';
+                }
+
+                if(src == 91 && this.board[src] == PIECES.w_r){
+                    this.castlingInfo[1] = '-';
+                }
+                
+                if(src == 98 && this.board[src] == PIECES.w_r){
+                    this.castlingInfo[0] = '-';
+                }
+            }
+        }
+        else{
+            if(this.castlingInfo[2] != '-' || this.castlingInfo[3] != '-'){
+                
+                if(src == this.kingIndex){
+                    this.castlingInfo[2] = '-';
+                    this.castlingInfo[3] = '-';
+                }
+
+                if(src == 21 && this.board[src] == PIECES.b_r){
+                    this.castlingInfo[3] = '-';
+                }
+                
+                if(src == 28 && this.board[src] == PIECES.b_r){
+                    this.castlingInfo[2] = '-';
+                }
+            }
+        }
+
+        this.fullMoveNumber += 0.5;
+        
+        this.attackedPositions = this.getNextAttackedPositions(); // check this method for pawn promotion
+
+        this.turn = Utils.changeTurn(this.turn);
+        this.setIndexAndPieces();
+        this.isChecked = this.getKingCheck();
+
     }
 
     setIndexAndPieces(){
