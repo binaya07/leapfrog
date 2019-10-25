@@ -28,7 +28,7 @@ var game = new Game(chess);
 
 game.play();
 
-setInterval(game.play, 2000);
+var id = setInterval(game.play.bind(game), 2000);
 
 // var b = Utils.convertArray120To64(chess.board);
 
@@ -49,16 +49,17 @@ var fenButton = document.getElementsByClassName('fen-button')[0];
 
 
 fenButton.onclick = function(){
+    clearInterval(id);
     var fen = fenElement.value.trim();
 
-    var chess = new Chess(fen);
-    var b = Utils.convertArray120To64(chess.board);
-
-    game.removeBoard();
-    game.addBoard(b);
-
+    chess = new Chess(fen);
+    game = new Game(chess);
+    
+    game.play();
+    
+    id = setInterval(game.play, 2000);
+    
     
     //console.log(chess.getKingCheck());
-
 
 };

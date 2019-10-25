@@ -115,7 +115,6 @@ class Chess{
 
     getPawnMoves(){
 
-        // TODO: check en passant
         // implement pawn attacks below
         var pawnMoves = [];
         var currentIndex;
@@ -457,10 +456,7 @@ class Chess{
 
         // IMP : TODO: check next attacked positions after pawn promotion move, -- maybe it should be calculated after the move
         
-        // if king moves..castling is void for that side and if rook moves or is captured
         // maybe keep track of captured pieces [to show in UI] -- keep track from main
-        // if move = [95, 97] or [95, 93] or similar for black and 95 == 'K' then it's castle move
-
 
         // remove fen from cosntructor .. update all and play same instance
 
@@ -496,6 +492,9 @@ class Chess{
             if(Math.abs(dest - src) == 20){
                 this.enPassantTarget = dest + 10;
             }
+            else{
+                this.enPassantTarget = '-';
+            }
         }
         
         if(this.board[src] == PIECES.b_p){
@@ -515,6 +514,9 @@ class Chess{
             // en passant update
             if(Math.abs(dest - src) == 20){
                 this.enPassantTarget = dest - 10;
+            }
+            else{
+                this.enPassantTarget = '-';
             }
         }
         

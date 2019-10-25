@@ -127,8 +127,8 @@ class Game{
         img.classList.add(class1);
         img.classList.add(class2);
         img.setAttribute('src', imgSrc);
-        img.style.width = 'inherit';
-        img.style.height = 'inherit';
+        img.style.width = '70px';
+        img.style.height = '70px';
         img.style.paddingBottom ='5px';
         img.style.paddingRight = '5px';
         
@@ -150,23 +150,60 @@ class Game{
 
     play(){
 
-        var b = Utils.convertArray120To64(chess.board);
-        
-        game.removeBoard();
-        game.addBoard(b);
-        
-        var pMoves = chess.getPseudoLegalMoves();
+        var pMoves = this.chess.getPseudoLegalMoves();
 
         var ind = parseInt(Math.random() * pMoves.length - 1);
         
-        chess.makeMove(pMoves[ind]);
+        this.chess.makeMove(pMoves[ind]);
+               
+        var b = Utils.convertArray120To64(this.chess.board);
+       
+        this.removeBoard();
+        this.addBoard(b);
         
-        game.removeBoard();
+        this.drawPath(pMoves[ind]);
+ 
+        //game.removeBoard();
 
-        var b = Utils.convertArray120To64(chess.board);
 
-        game.addBoard(b);
+        // var b = Utils.convertArray120To64(this.chess.board);
 
-        
+        // game.addBoard(b);
+
+
+    }
+
+    drawPath(move){
+        var src = move[0];
+        var dest = move[1];
+
+        var srcX = (src % 10) * 70 - 15;
+        var srcY = ( parseInt(src / 10) % 10 ) * 70 - 85;
+
+        var destX = (dest % 10) * 70 - 15;
+        var destY = ( parseInt(dest / 10) % 10 ) * 70 - 85;
+
+        // if(dest - src)
+        var dots = document.createElement('div');
+        dots.style.width = '10px';
+        dots.style.height = '10px';
+        dots.style.borderRadius = '50%';
+        dots.style.backgroundColor = 'red';
+        dots.style.position = 'absolute';
+        dots.style.top = srcY + 'px';
+        dots.style.left = srcX + 'px';
+        this.boardContainer.appendChild(dots);
+
+        var dots = document.createElement('div');
+        dots.style.width = '10px';
+        dots.style.height = '10px';
+        dots.style.borderRadius = '50%';
+        dots.style.backgroundColor = 'green';
+        dots.style.position = 'absolute';
+        dots.style.top = destY + 'px';
+        dots.style.left = destX + 'px';
+
+
+        this.boardContainer.appendChild(dots);
     }
 }
