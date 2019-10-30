@@ -14,9 +14,6 @@ class Utils{
              attackedPositions.add(moves[i][1]);
         }
 
-        chess.turn = this.changeTurn(chess.turn);
-        chess.setIndexAndPieces();
-
         return attackedPositions;
     }
 
@@ -94,4 +91,100 @@ class Utils{
         }
         return b;
     }   
+
+    static validateMove(move, board, turn, kingIndex, currentPieces, opponentPieces){
+
+        var src = move[0];
+        var dest = move[1];
+
+        board[dest] = board[src];
+        board[src] = PIECES.EMPTY;
+
+        if(src == kingIndex){
+            kingIndex = dest;
+        }
+
+        // check king attacks from pawn
+        if(turn == COLORS.WHITE){
+            for(var k = 0; k < WHITE_PAWN_ATTACKS.length; k++){
+                if(board[ kingIndex + WHITE_PAWN_ATTACKS[k] ] == PIECES.b_p){
+                    return false;
+                }
+                
+            }        
+        }
+        else{
+            for(var k = 0; k < BLACK_PAWN_ATTACKS.length; k++){
+                if(board[ kingIndex + BLACK_PAWN_ATTACKS[k] ] == PIECES.w_p){
+                    return false;
+                }
+            }  
+        }
+
+        // check king attacks from knight
+        for(var k = 0; k < KNIGHT_MOVES.length; k++){
+            if(board[ kingIndex + KNIGHT_MOVES[k] ] == opponentPieces[2]){
+                return false;
+            }
+        }
+
+        // check king attacks from rook
+        if(!this.validateFromSlidingPieces(board, kingIndex, ROOK_MOVES, 3, currentPieces, opponentPieces)){
+            return false;
+        }
+
+        // check king attacks from bishop
+        if(!this.validateFromSlidingPieces(board, kingIndex, BISHOP_MOVES, 1, currentPieces, opponentPieces)){
+            return false;
+        }
+
+        // check king attacks from queen
+        if(!this.validateFromSlidingPieces(board, kingIndex, QUEEN_MOVES, 4, currentPieces, opponentPieces)){
+            return false;
+        }
+
+        // check king attacks from king
+        for(var i = 0; i < KING_MOVES.length; i++){
+            if(board[ kingIndex + KING_MOVES[k] ] == opponentPieces[5]){
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+    
+    static validateFromSlidingPieces(board, currentIndex, pieceMoves, opIndex, currentPieces, opponentPieces){
+        
+        var nextIndex;
+        var flag = true;
+    
+        for(var k = 0; k < pieceMoves.length; k++){
+
+            nextIndex = currentIndex + pieceMoves[k];
+
+            while(true){
+                if(board[nextIndex] == PIECES.OFF_BOARD || currentPieces.includes(board[nextIndex])){
+                    break;
+                }
+                else if(opponentPieces.includes(board[nextIndex])){
+                    if(board[nextIndex] == opponentPieces[opIndex]){
+                        flag = false;
+                        break;
+                    }
+                    break;
+                }
+                else{
+                    nextIndex += pieceMoves[k];
+                }
+            }
+
+            if(!flag){
+                break;
+            }
+           
+        }
+
+        return flag;
+    }
 }

@@ -16,12 +16,8 @@ class Chess{
         this.castlingInfo = this.castlingInfo.split("");
 
         if(attackedPositions == null){
-
-            // clone and send ... dont send  this
-
-            //var clone = Object.assign({}, this); //-- remove last change turn from utils.calculateAttackedPositions
-            this.attackedPositions = Utils.calculateAttackedPositions(this);
-            //this.attackedPositions = [];
+            var clone = Object.assign(Object.create(this), this); 
+            this.attackedPositions = Utils.calculateAttackedPositions(clone);
         }
         else{
             this.attackedPositions = attackedPositions;
@@ -42,17 +38,10 @@ class Chess{
 
         var check = false;
 
-        if(this.turn == COLORS.WHITE){
-            if(this.attackedPositions.has(this.board.indexOf(PIECES.w_k))){
-                check = true;
-            }
+        if(this.attackedPositions.has(this.kingIndex)){
+            check = true;
         }
-        else{
-            if(this.attackedPositions.has(this.board.indexOf(PIECES.b_k))){
-                check = true;
-            }
-        }
-
+        
         return check;
     }
 
@@ -64,6 +53,7 @@ class Chess{
 
     checkCheckMate(){
         //if king checked and no valid moves
+
     }
 
     checkDraw(){
@@ -85,20 +75,6 @@ class Chess{
         moves.push.apply(moves , this.getCastleMoves());
 
         return moves;
-    }
-
-    validateMoves(){
-        //TODO: Validate all generated moves..
-        //basically, next move should not result in king check -- one possible option is to check from king's perspective
-        //if king is checked, only those moves which removes the check are legal
-        //if any moves results in check, those should be removed...
-
-
-        var moves = this.getPseudoLegalMoves();
-
-        // validate and pass to this.moves
-
-        this.moves = moves;
     }
 
     getAllMovesExceptPawnAndCastle(){
@@ -472,6 +448,10 @@ class Chess{
             this.halfmoveClock = 0;
         }
 
+        if(this.board[src] != this.currentPieces[0]){
+            this.enPassantTarget = '-';
+        }
+
         // update pawn en passant, pawn promotion
         if(this.board[src] == PIECES.w_p){
             if((dest - src) % 10 != 0){
@@ -525,6 +505,7 @@ class Chess{
         if(src == this.kingIndex && Math.abs(castleDir) == 2){
 
             this.board[dest] = this.board[src];
+            this.board[src] = PIECES.EMPTY;
             moved = true;
 
             if(castleDir > 0){

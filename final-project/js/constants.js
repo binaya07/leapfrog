@@ -5,6 +5,11 @@ const BLACK_PIECES = ['p', 'b', 'n', 'r', 'q', 'k'];
 
 const WHITE_PIECES = ['P', 'B', 'N', 'R', 'Q', 'K'];
 
+const DEFAULT_POSITION = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
+
+// const DEFAULT_POSITION1 = 'rnbqkbnr/pppppppp/8/8/8/7p/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
+
+
 const NUM_OF_SQUARES = 120;
 
 const FILES = { FILE_A: 0, FILE_B: 1, FILE_C: 2, FILE_D: 3, FILE_E: 4, FILE_F: 5, FILE_G: 6, FILE_H: 7, FILE_NONE: 8 };

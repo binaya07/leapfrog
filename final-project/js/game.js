@@ -1,11 +1,14 @@
 
 class Game{
-    constructor(chess){
+    constructor(chess, players = null, playerColor = null){
         this.chess = chess;
+
+        this.players = players;
+        this.playerColor = playerColor;
 
         this.boardContainer = document.getElementsByClassName('board')[0];
 
-        this.boardContainer.onclick = this.checkClick;
+        this.boardContainer.onclick = this.checkClick.bind(this);
     }
 
     addBoard(boardArray){
@@ -55,64 +58,52 @@ class Game{
                 
                 switch(boardArray[boardIndex]){
                     case PIECES.b_p:
-                        var img = this.addPiece('black', 'pawn', 'images/bP.png');
-                        col.appendChild(img); 
+                        this.addPiece('black', 'pawn', 'images/bP.png', boardIndex);
                         break;
 
                     case PIECES.w_p:
-                        var img = this.addPiece('white', 'pawn', 'images/wP.png');
-                        col.appendChild(img); 
+                        this.addPiece('white', 'pawn', 'images/wP.png', boardIndex);
                         break;
 
                     case PIECES.b_r:
-                        var img = this.addPiece('black', 'rook', 'images/bR.png');
-                        col.appendChild(img); 
+                        this.addPiece('black', 'rook', 'images/bR.png', boardIndex);
                         break;
 
                     case PIECES.w_r:
-                        var img = this.addPiece('white', 'rook', 'images/wR.png');
-                        col.appendChild(img); 
+                        this.addPiece('white', 'rook', 'images/wR.png', boardIndex);
                         break;
 
                     case PIECES.b_b:
-                        var img = this.addPiece('black', 'bishop', 'images/bB.png');
-                        col.appendChild(img); 
+                        this.addPiece('black', 'bishop', 'images/bB.png', boardIndex);
                         break;
 
                             
                     case PIECES.w_b:
-                        var img = this.addPiece('white', 'bishop', 'images/wB.png');
-                        col.appendChild(img); 
+                        this.addPiece('white', 'bishop', 'images/wB.png', boardIndex);
                         break;
                     
                     case PIECES.b_n:                        
-                        var img = this.addPiece('black', 'knight', 'images/bN.png');
-                        col.appendChild(img); 
+                        this.addPiece('black', 'knight', 'images/bN.png', boardIndex);
                         break;
                     
                     case PIECES.w_n:
-                        var img = this.addPiece('white', 'knight', 'images/wN.png');
-                        col.appendChild(img); 
+                        this.addPiece('white', 'knight', 'images/wN.png', boardIndex);
                         break;
                 
                     case PIECES.b_q:
-                        var img = this.addPiece('black', 'queen', 'images/bQ.png');
-                        col.appendChild(img); 
+                        this.addPiece('black', 'queen', 'images/bQ.png', boardIndex);
                         break;
                             
                     case PIECES.w_q:
-                        var img = this.addPiece('white', 'queen', 'images/wQ.png');
-                        col.appendChild(img); 
+                        this.addPiece('white', 'queen', 'images/wQ.png', boardIndex);
                         break;
 
                     case PIECES.b_k:
-                        var img = this.addPiece('black', 'king', 'images/bK.png');
-                        col.appendChild(img); 
+                        this.addPiece('black', 'king', 'images/bK.png', boardIndex);
                         break;
                             
                     case PIECES.w_k:
-                        var img = this.addPiece('white', 'king', 'images/wK.png');
-                        col.appendChild(img); 
+                        this.addPiece('white', 'king', 'images/wK.png', boardIndex);
                         break;
         
                     default: break;
@@ -121,18 +112,32 @@ class Game{
         }
     }
 
-    addPiece(class1, class2, imgSrc){
+    addPiece(class1, class2, imgSrc, index){
         var img = document.createElement('img');
         
         img.classList.add(class1);
         img.classList.add(class2);
         img.setAttribute('src', imgSrc);
-        img.style.width = '70px';
-        img.style.height = '70px';
-        img.style.paddingBottom ='5px';
-        img.style.paddingRight = '5px';
-        
-        return img;
+        img.style.width = '60px';
+        img.style.height = '60px';
+        img.style.position = 'absolute';
+        img.style.left = this.getLeft(index) + 'px';
+        img.style.top = this.getTop(index) + 'px';
+        img.style.zIndex = '10';
+
+        this.boardContainer.appendChild(img);
+    }
+
+    getLeft(index){
+        var offset = 5;
+        var left = (index % 8) * 70 + offset;
+        return left;
+    }
+
+    getTop(index){
+        var offset = 5;
+        var top = parseInt(index / 8) * 70 + offset;
+        return top;
     }
 
     removeBoard(){
@@ -140,37 +145,260 @@ class Game{
     }
 
     checkClick(e){
-
-        var el = e.target;
         
-        var x = el.parentElement.getAttribute('id');
-        console.log(el.getAttribute('class').split(" "));
-        console.log(x);
+        if(this.chess.turn == this.playerColor){
+           
+            var el = e.target;
+            var pieceColor = el.getAttribute('class').split(" ")[0];
+
+            if(this.playerColor == COLORS.WHITE){
+                
+                if(pieceColor == 'white'){
+                    this.removeSuggestions();
+
+                    this.pieceChosen = true;
+
+                    var leftPos = (parseInt(el.style.left) - 5) / 70;
+                    var topPos = (parseInt(el.style.top) - 5) / 70;
+                    this.pieceIndex = 20 + topPos * 10 + leftPos + 1;
+                    
+                    this.pieceDest = [];
+
+                    for(var i = 0; i < this.validMoves.length; i++){
+                        if(this.validMoves[i][0] == this.pieceIndex){
+                            this.pieceDest.push(this.validMoves[i][1]);
+
+                            this.drawPossibleMoves(this.validMoves[i][1]);
+                        }
+                    }
+                    console.log(this.pieceIndex, this.pieceDest);
+                }
+                else{
+                    if(this.pieceChosen){
+                        var removeDotsFlag = false;
+
+                        if(pieceColor == 'black'){
+                            var leftPos = (parseInt(el.style.left) - 5) / 70;
+                            var topPos = (parseInt(el.style.top) - 5) / 70;
+                            var index = 20 + topPos * 10 + leftPos + 1;
+                            
+                            if(this.pieceDest.includes(index)){
+
+                                this.currentMove = [this.pieceIndex, index];
+                                this.chess.makeMove(this.currentMove);
+                                this.turnOverflag = true;
+                                
+                                if(this.players == 2){
+                                    this.playerColor = COLORS.BLACK;
+                                }
+                                this.play();
+                            }
+                            else{
+                                removeDotsFlag = true;
+                            }
+                        }
+                        else{
+                            var index = SQUARES[el.getAttribute('id').toUpperCase()];
+                            
+                            if(this.pieceDest.includes(index)){
+
+                                this.currentMove = [this.pieceIndex, index];
+                                this.chess.makeMove(this.currentMove);
+                                this.turnOverflag = true;
+                                
+                                if(this.players == 2){
+                                    this.playerColor = COLORS.BLACK;
+                                }
+                                this.play();
+                            }
+                            else{
+                                removeDotsFlag = true;
+                            }
+                        }
+
+                        if(removeDotsFlag){
+                            this.removeSuggestions();   
+                        }
+                        
+                        this.pieceChosen = false;
+                    }
+                    else{
+                        this.pieceChosen = false;
+                    }
+                }
+            }
+            else{
+                if(pieceColor == 'black'){
+                    this.removeSuggestions();
+                    this.pieceChosen = true;
+
+                    var leftPos = (parseInt(el.style.left) - 5) / 70;
+                    var topPos = (parseInt(el.style.top) - 5) / 70;
+                    this.pieceIndex = 20 + topPos * 10 + leftPos + 1;
+                    
+                    this.pieceDest = [];
+
+                    for(var i = 0; i < this.validMoves.length; i++){
+                        if(this.validMoves[i][0] == this.pieceIndex){
+                            this.pieceDest.push(this.validMoves[i][1]);
+
+                            this.drawPossibleMoves(this.validMoves[i][1]);
+                        }
+                    }
+                    console.log(this.pieceIndex, this.pieceDest);
+                }
+                else{
+                    if(this.pieceChosen){
+
+                        var removeDotsFlag = false;
+
+                        if(pieceColor == 'white'){
+                            var leftPos = (parseInt(el.style.left) - 5) / 70;
+                            var topPos = (parseInt(el.style.top) - 5) / 70;
+                            var index = 20 + topPos * 10 + leftPos + 1;
+                            
+                            if(this.pieceDest.includes(index)){
+
+                                this.currentMove = [this.pieceIndex, index];
+                                this.chess.makeMove(this.currentMove);
+                                this.turnOverflag = true;
+                                
+                                if(this.players == 2){
+                                    this.playerColor = COLORS.WHITE;
+                                }
+                                this.play();
+                            }
+                            else{
+                                removeDotsFlag = true;
+                            }
+                        }
+                        else{
+                            var index = SQUARES[el.getAttribute('id').toUpperCase()];
+                            
+                            if(this.pieceDest.includes(index)){
+
+                                this.currentMove = [this.pieceIndex, index];
+                                this.chess.makeMove(this.currentMove);
+                                this.turnOverflag = true;
+                                
+                                if(this.players == 2){
+                                    this.playerColor = COLORS.WHITE;
+                                }
+                                this.play();
+                            }
+                            else{
+                                removeDotsFlag = true;
+                            }
+                        }
+                        
+                        if(removeDotsFlag){
+                            this.removeSuggestions();
+                        }
+
+                        this.pieceChosen = false;
+                    }
+                    else{
+                        this.pieceChosen = false;
+                    }
+                }
+            }
+        }
+
+        // console.log(el.getAttribute('class').split(" "));
+        // console.log(el.getAttribute('id'));
+    }
+
+    removeSuggestions(){
+
+        var dots = document.getElementsByClassName('possible-moves');
+
+        while(dots.length > 0){
+            dots[0].parentNode.removeChild(dots[0]);
+        }
+        
     }
 
     play(){
 
-        var pMoves = this.chess.getPseudoLegalMoves();
+        if(this.chess.fullMoveNumber == 1){
+            var b = Utils.convertArray120To64(this.chess.board);
+            this.addBoard(b);
+        }
 
-        var ind = parseInt(Math.random() * pMoves.length - 1);
+        var pmoves = this.chess.getPseudoLegalMoves();
+        var lMoves = [];
+
+        if(this.players != 2){
+            this.turnOverflag = false;
+        }
+
+        // validate moves
+        for(var i = 0; i < pmoves.length; i++){
+            if(Utils.validateMove(pmoves[i], [...this.chess.board], this.chess.turn, this.chess.kingIndex, this.chess.currentPieces, this.chess.opponentPieces)){
+                lMoves.push(pmoves[i]);
+            }
+        }
+
+        this.validMoves = lMoves;
+
+        // check for win and draw conditions
+        if(this.chess.isChecked && lMoves.length == 0){
+            console.log('check mate');
+        }
+
+        else if(!this.chess.isChecked && lMoves.length == 0){
+            console.log('stale mate');
+        }
+
+        else if(this.chess.halfmoveClock == 50){
+            console.log('50 move draw');
+        }
+
+        // check player turn
+        if(this.playerColor != this.chess.turn && this.players != 2){
+
+            var ind = parseInt(Math.random() * lMoves.length - 1);
+            this.chess.makeMove(lMoves[ind]);
+            
+            this.currentMove = lMoves[ind];
+            this.turnOverflag = true;
+        }
+
+
+        // query selector for animation
+            
+        if(this.turnOverflag){ 
+            var b = Utils.convertArray120To64(this.chess.board);
+    
+            this.removeBoard();
+            this.addBoard(b);
+            this.drawPath(this.currentMove);
+
+            if(this.players != 2){
+                this.play();
+            }
+        }
         
-        this.chess.makeMove(pMoves[ind]);
-               
-        var b = Utils.convertArray120To64(this.chess.board);
-       
-        this.removeBoard();
-        this.addBoard(b);
+    }
+
+    drawPossibleMoves(dest){
         
-        this.drawPath(pMoves[ind]);
- 
-        //game.removeBoard();
+        var destX = (dest % 10) * 70 - 40;
+        var destY = ( parseInt(dest / 10) % 10 ) * 70 - 110;
 
+        // if(dest - src)
+        var dots = document.createElement('div');
+        dots.style.width = '10px';
+        dots.style.height = '10px';
+        dots.style.borderRadius = '50%';
+        dots.style.backgroundColor = 'blue';
+        dots.style.position = 'absolute';
+        dots.style.top = destY + 'px';
+        dots.style.left = destX + 'px';
+        dots.style.zIndex = '10';
 
-        // var b = Utils.convertArray120To64(this.chess.board);
-
-        // game.addBoard(b);
-
-
+        dots.setAttribute('class', 'possible-moves');
+        this.boardContainer.appendChild(dots);
     }
 
     drawPath(move){
@@ -202,7 +430,6 @@ class Game{
         dots.style.position = 'absolute';
         dots.style.top = destY + 'px';
         dots.style.left = destX + 'px';
-
 
         this.boardContainer.appendChild(dots);
     }
