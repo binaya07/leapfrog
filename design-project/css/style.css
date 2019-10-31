@@ -54,6 +54,11 @@ a{
 
 }
 
+.menu-icon{
+    width: 25px;
+    height: 25px;
+}
+
 .sponsors-list{
     margin-left: auto;
     margin-right: auto;
