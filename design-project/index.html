@@ -10,7 +10,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
       <link href='https://fonts.googleapis.com/css?family=PlayfairDisplay' rel='stylesheet'>
-    
+
         
     </head>
 
@@ -255,12 +255,12 @@
                                 </div>
 
                                 <div class="auditorium-events">
-                                    <div class="event">
+                                    <div class="event" onclick="showDesc(this)">
                                         <img src="images/speaker1.png" class="user-img" alt="speaker 1">
                                         <div class="event-right">
                                             <div class="date-div">
                                                 <span>2:20 PM</span>
-                                                <a href="#/"  class="float-right" onclick="showDesc(this)"><img src="images/plus.png"></a>
+                                                <a href="#/"  class="float-right"><img src="images/plus.png" alt="plus"></a>
                                             </div>
                                             <div class="title">Event registration & Breakfast
                                             </div>
@@ -270,12 +270,12 @@
                                         </div>
                                     </div>
 
-                                    <div class="event">
+                                    <div class="event"  onclick="showDesc(this)">
                                         <img src="images/speaker2.png" class="user-img" alt="speaker 2">
                                         <div class="event-right">
                                             <div class="date-div">
                                                 <span>3:00 PM</span>
-                                                <a href="#/"  class="float-right" onclick="showDesc(this)"><img src="images/plus.png"></a>
+                                                <a href="#/"  class="float-right"><img src="images/plus.png" alt="plus"></a>
                                             </div>
                                             <div class="title">Scaling into crowded space
                                             </div>
@@ -285,12 +285,12 @@
                                         </div>
                                     </div>
 
-                                    <div class="event" >
+                                    <div class="event"  onclick="showDesc(this)">
                                             <img src="images/speaker5.png" class="user-img"  alt="speaker 5">
                                             <div class="event-right  no-border-bottom">
                                                 <div class="date-div">
                                                     <span>3:00 PM</span>
-                                                    <a href="#/"  class="float-right" onclick="showDesc(this)"><img src="images/plus.png"></a>
+                                                    <a href="#/"  class="float-right"><img src="images/plus.png" alt="plus"></a>
                                                 </div>
                                                 <div class="title">Open your business around the world
                                                 </div>
@@ -640,13 +640,16 @@
             }
 
             function showDesc(e){
-                var el = e.parentElement.parentElement.children[2];
+                var el = e.children[1].children[2];
+                var exp = e.children[1].children[0].children[1].children[0];
 
                 if(el.style.display == 'none'){
                     el.style.display = 'block';
+                    exp.setAttribute('src', 'images/minus.png');
                 }
                 else{
                     el.style.display = 'none';
+                    exp.setAttribute('src', 'images/plus.png');
                 }
             }
 
