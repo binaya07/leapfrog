@@ -1,19 +1,25 @@
 
-// attackedPositions is a Set .... check has()
-
 class Chess{
 
-    constructor(fen, attackedPositions = null, parent = null){
+    constructor(stats, attackedPositions = null, parent = null){
         
-        this.fen = fen;
+        // this.fen = fen;
         
-        [this.board, this.turn, this.castlingInfo, this.enPassantTarget, this.halfmoveClock, this.fullMoveNumber] = Utils.parseFen(this.fen);
+        // [this.board, this.turn, this.castlingInfo, this.enPassantTarget, this.halfmoveClock, this.fullMoveNumber] = Utils.parseFen(this.fen);
         
-        this.enPassantTarget = SQUARES[this.enPassantTarget.toUpperCase()];
+        //
+        this.board = stats.board;
+        this.turn = stats.turn;
+        this.castlingInfo = stats.castlingInfo;
+        this.enPassantTarget = stats.enPassantTarget;
+        this.halfmoveClock = stats.halfmoveClock;
+        this.fullMoveNumber = stats.fullMoveNumber;
+        //
+        // this.enPassantTarget = SQUARES[this.enPassantTarget.toUpperCase()];
 
         this.setIndexAndPieces();
 
-        this.castlingInfo = this.castlingInfo.split("");
+        // this.castlingInfo = this.castlingInfo.split("");
 
         if(attackedPositions == null){
             var clone = Object.assign(Object.create(this), this); 
@@ -27,6 +33,7 @@ class Chess{
 
         this.moves = [];
 
+        this.latestState = {};
         //this.currentBoardScore = 0;
         //this.evaluateBoard();
 
@@ -43,23 +50,6 @@ class Chess{
         }
         
         return check;
-    }
-
-    evaluateBoard(){
-        // TODO: heuristic to evaluate current board score for current player -- MAYBE IN UTILS 
-        // TODO: consider checkmate and draw conditions too..
-
-    }
-
-    checkCheckMate(){
-        //if king checked and no valid moves
-
-    }
-
-    checkDraw(){
-        // TODO: check stalemate, 50 moves, and other conditions (such as king and king, king and bishop of different colors, king and knight) --> maybe yo only in movegenerator
-        
-        // if king not checked and no valid moves --> stalemate
     }
 
 
@@ -411,9 +401,6 @@ class Chess{
     }
 
     getNextAttackedPositions(){
-        // same as calculated above .. but for reason of sending to another move
-        
-        //TODO: check whether this is correct after pawn promotion move
 
         var moves = this.getAllMovesExceptPawnAndCastle();
         moves.push.apply(moves, this.getPawnAttacksOnly());
@@ -428,13 +415,17 @@ class Chess{
     }
 
     makeMove(move){
-        // TODO: makes move .. update board, turn, castling info .. basically fen string .. return fen .. 
-
-        // IMP : TODO: check next attacked positions after pawn promotion move, -- maybe it should be calculated after the move
-        
-        // maybe keep track of captured pieces [to show in UI] -- keep track from main
-
-        // remove fen from cosntructor .. update all and play same instance
+        this.latestState.board = [...this.board];
+        this.latestState.turn = this.turn;
+        this.latestState.castlingInfo = [...this.castlingInfo];
+        this.latestState.enPassantTarget = this.enPassantTarget;
+        this.latestState.halfmoveClock = this.halfmoveClock;
+        this.latestState.fullMoveNumber = this.fullMoveNumber;
+        this.latestState.attackedPositions = new Set([...this.attackedPositions]);
+        this.latestState.isChecked = this.isChecked;
+        this.latestState.kingIndex = this.kingIndex;
+        this.latestState.currentPieces = this.currentPieces;
+        this.latestState.opponentPieces = this.opponentPieces;
 
         var src = move[0];
         var dest = move[1];
@@ -567,6 +558,21 @@ class Chess{
         this.turn = Utils.changeTurn(this.turn);
         this.setIndexAndPieces();
         this.isChecked = this.getKingCheck();
+
+    }
+
+    undoLastMove(){
+        this.board = this.latestState.board;
+        this.turn = this.latestState.turn;
+        this.castlingInfo = this.latestState.castlingInfo;
+        this.enPassantTarget = this.latestState.enPassantTarget;
+        this.halfmoveClock = this.latestState.halfmoveClock;
+        this.fullMoveNumber = this.latestState.fullMoveNumber;
+        this.attackedPositions = this.latestState.attackedPositions;
+        this.isChecked = this.latestState.isChecked;
+        this.kingIndex = this.latestState.kingIndex;
+        this.currentPieces = this.latestState.currentPieces;
+        this.opponentPieces = this.latestState.opponentPieces;
 
     }
 

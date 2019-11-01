@@ -76,7 +76,20 @@ class Utils{
         var halfmoveClock = parseInt(sub[4]);
         var fullMoveNumber = parseInt(sub[5]);
 
-        return [board, turn, castlingInfo, enPassantTarget, halfmoveClock, fullMoveNumber];
+        //
+        var chessStat = {};
+        chessStat.board = board;
+        chessStat.turn = turn;
+        chessStat.castlingInfo = castlingInfo;
+        chessStat.enPassantTarget = enPassantTarget;
+        chessStat.halfmoveClock = halfmoveClock;
+        chessStat.fullMoveNumber = fullMoveNumber;
+
+        chessStat.castlingInfo = chessStat.castlingInfo.split("");
+        chessStat.enPassantTarget = SQUARES[chessStat.enPassantTarget.toUpperCase()];
+
+        return chessStat;
+        // return [board, turn, castlingInfo, enPassantTarget, halfmoveClock, fullMoveNumber];
     }
 
     
@@ -145,7 +158,7 @@ class Utils{
 
         // check king attacks from king
         for(var i = 0; i < KING_MOVES.length; i++){
-            if(board[ kingIndex + KING_MOVES[k] ] == opponentPieces[5]){
+            if(board[ kingIndex + KING_MOVES[i] ] == opponentPieces[5]){
                 return false;
             }
         }
@@ -174,8 +187,11 @@ class Utils{
                     }
                     break;
                 }
-                else{
+                else if(board[nextIndex] == PIECES.EMPTY){
                     nextIndex += pieceMoves[k];
+                }
+                else{
+                    break;
                 }
             }
 
@@ -186,5 +202,81 @@ class Utils{
         }
 
         return flag;
+    }
+
+    static getScore(board){
+       
+        var score = 0;
+    
+        for(var i = RANKS.RANK_1; i <= RANKS.RANK_8; i++){
+            for(var j = FILES.FILE_A; j <= FILES.FILE_H; j++){
+               
+                var index = 20 + i * 10 + j + 1;            
+                var index64 = 8 * i + j;
+
+                if(WHITE_PIECES.includes(board[index])){
+                    switch(board[index]){
+
+                        case WHITE_PIECES[0]: score = score + 100 + PAWN_TABLE[MIRROR64[index64]];
+                                        break;
+                        
+                        case WHITE_PIECES[1]: score = score + 300 + BISHOP_TABLE[MIRROR64[index64]];
+                                        break;
+
+                        case WHITE_PIECES[2]: score = score + 300 + KNIGHT_TABLE[MIRROR64[index64]];
+                                        break;
+                        
+                        case WHITE_PIECES[3]: score = score + 500 + ROOK_TABLE[MIRROR64[index64]];
+                                        break;
+                        
+                        case WHITE_PIECES[4]: score = score + 900 + ROOK_TABLE[MIRROR64[index64]];
+                                        break;
+        
+                        case WHITE_PIECES[5]: score += 9000;
+                                        break;
+                        
+                        default: break; 
+                    }
+                }
+                else if(BLACK_PIECES.includes(board[index])){
+                    switch(board[index]){
+
+                        case BLACK_PIECES[0]: score = score - 100 - PAWN_TABLE[index64];
+                                        break;
+                        
+                        case BLACK_PIECES[1]: score = score - 300 - BISHOP_TABLE[index64];
+                                        break;
+
+                        case BLACK_PIECES[2]: score = score - 300 - KNIGHT_TABLE[index64];
+                                        break;
+                        
+                        case BLACK_PIECES[3]: score = score - 500 - ROOK_TABLE[index64];
+                                        break;
+                        
+                        case BLACK_PIECES[4]: score = score - 900 - ROOK_TABLE[index64];
+                                        break;
+        
+                        case BLACK_PIECES[5]: score -= 9000;
+                                        break;
+                        
+                        default: break; 
+                    }
+                }
+            }
+        }
+
+        return score;
+    }
+
+    static evaluateBoard(board, turn){
+
+        var score = this.getScore(board);
+
+        if(turn == COLORS.WHITE){
+            return score;
+        }
+        else{
+            return -score;
+        }
     }
 }

@@ -1,8 +1,4 @@
 
-// control counters, 3 fold repitition, game over -- draw condition check (game over conditions maybe required in minmax to .. maybe)
-
-// to undo moves .. keep track of fen strings
-
 class Main{
 
     constructor(){
@@ -17,12 +13,17 @@ class Main{
 
             var fen = this.fenElement.value.trim();
 
-            chess = new Chess(fen);
-            game = new Game(chess);
-            
+            console.log('start game from fen');
+
+            var stats = Utils.parseFen(fen);
+
+            var chess = new Chess(stats);
+
+            var game = new Game(chess, 1, COLORS.WHITE);
+            this.boardContainer.innerHTML = '';
+            document.body.style.background = 'rgb(68, 68, 68)';
+
             game.play();
-            
-            this.id = setInterval(game.play.bind(game), 2000);
             
         }.bind(this);
 
@@ -34,6 +35,9 @@ class Main{
 
     addGameContainer(){
         this.gameContainer = document.getElementsByClassName('game-container')[0];
+        this.infoDiv = document.getElementsByClassName('info-div')[0];
+
+        this.infoDiv.innerHTML = '';
     }
     
     addBoardContainer(){
@@ -141,7 +145,19 @@ class Main{
 
         this.boardContainer.appendChild(this.whiteColorButton);
 
-        
+        this.backButton = document.createElement('button');
+        this.backButton.style.marginLeft = '233px';
+        this.backButton.style.background = 'gray';
+        this.backButton.style.color = 'white';
+        this.backButton.style.border = 'none';
+        this.backButton.style.borderRadius = '5%';
+        this.backButton.style.padding = '10px';
+        this.backButton.style.fontSize = '14px';
+        this.backButton.innerHTML = 'Go Back';        
+        this.backButton.style.marginTop = '85px';
+
+        this.boardContainer.appendChild(this.backButton);
+
         this.blackColorButton.onclick = function(){
             this.start(COLORS.BLACK);
         }.bind(this);
@@ -150,6 +166,10 @@ class Main{
             this.start(COLORS.WHITE);
         }.bind(this);
 
+        this.backButton.onclick = function(){
+            // this.loadFirstScreen();
+            var m = new Main();
+        }.bind(this);
     }
 
     addFenElements(){
@@ -166,7 +186,9 @@ class Main{
         if(color == COLORS.WHITE){
             console.log('start game as player white');
 
-            var chess = new Chess(DEFAULT_POSITION);
+            var stats = Utils.parseFen(DEFAULT_POSITION);
+
+            var chess = new Chess(stats);
 
             var game = new Game(chess, this.players, COLORS.WHITE);
             
@@ -175,8 +197,10 @@ class Main{
 
         else if(color == COLORS.BLACK){
             console.log('start game as player black');
-            
-            var chess = new Chess(DEFAULT_POSITION);
+        
+            var stats = Utils.parseFen(DEFAULT_POSITION);
+
+            var chess = new Chess(stats);
 
             var game = new Game(chess, this.players, COLORS.BLACK);
             
@@ -188,7 +212,10 @@ class Main{
 
             console.log('start multiplayer game');
             
-            var chess = new Chess(DEFAULT_POSITION);
+
+            var stats = Utils.parseFen(DEFAULT_POSITION);
+
+            var chess = new Chess(stats);
 
             var game = new Game(chess, this.players, COLORS.WHITE);
             
@@ -199,38 +226,6 @@ class Main{
 }
 
 var m = new Main();
-
-
-// var DEFAULT_POSITION1 = 'rnbqkb1r/8/8/PPPPPPPP/3r4/8/PPPPPPPP/R3K1BR b KQkq - 0 1';
-
-
-
-// var chess = new Chess(DEFAULT_POSITION);
-
-// var game = new Game(chess);
-
-// game.play();
-
-// var id = setInterval(game.play.bind(game), 1000);
-
-
-// var fenElement = document.getElementsByClassName('fen-input')[0];
-// var fenButton = document.getElementsByClassName('fen-button')[0];
-
-
-// fenButton.onclick = function(){
-//     clearInterval(id);
-//     var fen = fenElement.value.trim();
-
-//     chess = new Chess(fen);
-//     game = new Game(chess);
-    
-//     game.play();
-    
-//     id = setInterval(game.play.bind(game), 2000);
-    
-// };
-
 
 
 

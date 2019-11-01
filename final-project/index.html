@@ -13,15 +13,19 @@
     <body>
         <div class = "game-container">
             <div class = "fen">
-                <input type = "text" class="fen-input">
+                <input type = "text" class="fen-input" value="3qkb1r/p7/8/8/8/8/6P1/R2QKB2 w KQkq - 0 1">
                 <button class="fen-button">Apply FEN</button>
             </div>
-            <div class= "board"></div>
+            <div class="board-wrapper">
+                <div class= "board"></div>
+                <div class="info-div"></div>
+            </div>
         </div>
 
         <script src="js/constants.js"></script>
         <script src="js/utils.js"></script>
-        <script src="js/chess.js"></script>
+        <script src="js/chess.js"></script>        
+        <script src="js/search.js"></script>
         <script src="js/game.js"></script>
         <script src="js/main.js"></script>
 
