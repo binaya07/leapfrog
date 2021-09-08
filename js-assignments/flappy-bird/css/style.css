@@ -1,24 +1,23 @@
-*{
-    box-sizing: border-box;
-    margin: 0px;
+* {
+  box-sizing: border-box;
+  margin: 0px;
 }
 
-@font-face{
-    font-family: myFont;
-    src: url(04B_19__.TTF);
+@font-face {
+  font-family: myFont;
+  src: url(04B_19__.TTF);
 }
 
-body{
-    background-color: black;
+body {
+  background-color: black;
 }
 
-.game-container{
-    font-family: myFont;
-    width: 500px;
-    height: 650px;
-    float: left;
-    margin-left: 100px;
-    position: relative;
-    overflow: hidden;
-    margin-top: 25px;
+.game-container {
+  font-family: myFont;
+  width: 500px;
+  height: 650px;
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+  margin-top: 100px;
 }
